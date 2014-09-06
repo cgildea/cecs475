@@ -56,6 +56,11 @@ public class PayrollSystemTest
         employees[6] = basePlusCommissionEmployee;
         employees[7] = basePlusCommissionEmployee;
 
+        while (true)
+        {
+
+        }
+
 
         Console.WriteLine("Employees processed polymorphically:\n");
 
