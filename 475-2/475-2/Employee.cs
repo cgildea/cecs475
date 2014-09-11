@@ -1,6 +1,8 @@
-﻿// Fig. 12.13: Employee.cs
+﻿using System;
+using System.Collections;
+// Fig. 12.13: Employee.cs
 // Employee abstract base class.
-public abstract class Employee : IPayable
+public abstract class Employee : IPayable, IComparable
 {
     // read-only property that gets employee's first name
     public string FirstName { get; private set; }
@@ -26,9 +28,66 @@ public abstract class Employee : IPayable
            FirstName, LastName, SocialSecurityNumber);
     } // end method ToString
 
+
+    int IComparable.CompareTo(object obj)
+    {
+        Employee c = (Employee)obj;
+        return String.Compare(this.LastName, c.LastName);
+
+    }
+
+    private class sortPaymentAscendingHelper : IComparer
+    {
+        int IComparer.Compare(object a, object b)
+        {
+            Employee e1 = (Employee)a;
+            Employee e2 = (Employee)b;
+
+            if (e1.GetPaymentAmount() > e2.GetPaymentAmount())
+                return 1;
+
+            if (e1.GetPaymentAmount() < e2.GetPaymentAmount())
+                return -1;
+
+            else
+                return 0;
+        }
+    }
+
+    private class sortPaymentDescendingHelper : IComparer
+    {
+        int IComparer.Compare(object a, object b)
+        {
+            Employee e1 = (Employee)a;
+            Employee e2 = (Employee)b;
+
+            if (e1.GetPaymentAmount() < e2.GetPaymentAmount())
+                return 1;
+
+            if (e1.GetPaymentAmount() > e2.GetPaymentAmount())
+                return -1;
+
+            else
+                return 0;
+        }
+    }
+
+    public static IComparer sortPaymentAscending()
+    {
+        return (IComparer)new sortPaymentAscendingHelper();
+    }
+    public static IComparer sortPaymentDescending()
+    {
+        return (IComparer)new sortPaymentDescendingHelper();
+    }
+
+
     // Note: We do not implement IPayable method GetPaymentAmount here so
     // this class must be declared abstract to avoid a compilation error.
     public abstract decimal GetPaymentAmount();
+
+    public abstract int getSSN();
+
 } // end abstract class Employee
 
 /**************************************************************************

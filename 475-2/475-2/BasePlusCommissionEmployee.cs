@@ -33,7 +33,7 @@ public class BasePlusCommissionEmployee : CommissionEmployee
     } // end property BaseSalary
 
     // calculate earnings; override method Earnings in CommissionEmployee
-    public override decimal Earnings()
+    public override decimal GetPaymentAmount()
     {
         return BaseSalary + base.GetPaymentAmount();
     } // end method Earnings               
@@ -43,7 +43,13 @@ public class BasePlusCommissionEmployee : CommissionEmployee
     {
         return string.Format("base-salaried {0}; base salary: {1:C}",
            base.ToString(), BaseSalary);
-    } // end method ToString                                            
+    } // end method ToString 
+
+
+    public override int getSSN()
+    {
+        return Int32.Parse(this.SocialSecurityNumber.Replace("-", ""));
+    }                              
 } // end class BasePlusCommissionEmployee
 
 /**************************************************************************

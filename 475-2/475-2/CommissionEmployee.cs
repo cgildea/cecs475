@@ -62,7 +62,12 @@ public class CommissionEmployee : Employee
         return string.Format("{0}: {1}\n{2}: {3:C}\n{4}: {5:F2}",
            "commission employee", base.ToString(),
            "gross sales", GrossSales, "commission rate", CommissionRate);
-    } // end method ToString                                             
+    } // end method ToString      
+
+    public override int getSSN()
+    {
+        return Int32.Parse(this.SocialSecurityNumber.Replace("-", ""));
+    }                                
 } // end class CommissionEmployee
 
 /**************************************************************************
