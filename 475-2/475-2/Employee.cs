@@ -29,10 +29,19 @@ public abstract class Employee : IPayable, IComparable
     } // end method ToString
 
 
-    int IComparable.CompareTo(object obj)
+    int IComparable.CompareTo(object C)
     {
-        Employee c = (Employee)obj;
-        return String.Compare(this.LastName, c.LastName);
+        Employee temp = (Employee)C;
+        if (!(this.LastName.Equals(temp.LastName)))
+        {
+            return this.LastName.CompareTo(temp.LastName);
+        }
+        else if (!(this.FirstName.Equals(temp.FirstName)))
+        {
+            return this.FirstName.CompareTo(temp.LastName);
+        }
+        else
+            return this.getSSN() - temp.getSSN();
 
     }
 
