@@ -65,7 +65,12 @@ public class HourlyEmployee : Employee
         return string.Format(
            "hourly employee: {0}\n{1}: {2:C}; {3}: {4:F2}",
            base.ToString(), "hourly wage", Wage, "hours worked", Hours);
-    } // end method ToString                                            
+    } // end method ToString  
+
+    public override int getSSN()
+    {
+        return Int32.Parse(this.SocialSecurityNumber.Replace("-", ""));
+    }                              
 } // end class HourlyEmployee
 
 /**************************************************************************

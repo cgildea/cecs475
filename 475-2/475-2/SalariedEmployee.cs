@@ -32,7 +32,7 @@ public class SalariedEmployee : Employee
     } // end property WeeklySalary
 
     // calculate earnings; override abstract method Earnings in Employee
-    public override decimal Earnings()
+    public override decimal GetPaymentAmount()
     {
         return WeeklySalary;
     } // end method Earnings          
@@ -42,7 +42,12 @@ public class SalariedEmployee : Employee
     {
         return string.Format("salaried employee: {0}\n{1}: {2:C}",
            base.ToString(), "weekly salary", WeeklySalary);
-    } // end method ToString                                      
+    } // end method ToString
+
+    public override int getSSN()
+    {
+        return Int32.Parse(this.SocialSecurityNumber.Replace("-", ""));
+    }                           
 } // end class SalariedEmployee
 
 /**************************************************************************

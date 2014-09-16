@@ -3,6 +3,7 @@
 public interface IPayable
 {
     decimal GetPaymentAmount(); // calculate payment; no implementation
+    int getSSN();
 } // end interface IPayable
 
 /**************************************************************************
