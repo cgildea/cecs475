@@ -1,0 +1,72 @@
+Broker 4       Technology	173       174       1              16        
+
+Broker 1       Technology	157       153       -4             15        
+
+Broker 2       Technology	157       153       -4             15        
+
+Broker 3       Technology	157       153       -4             15        
+
+Broker 4       Technology	157       153       -4             15        
+
+Broker 1       Technology	153       151       -2             17        
+
+Broker 2       Technology	153       151       -2             17        
+
+Broker 3       Technology	153       151       -2             17        
+
+Broker 4       Technology	153       151       -2             17        
+
+Broker 1       Retail    	27        26        -1             6         
+
+Broker 4       Retail    	27        26        -1             6         
+
+Broker 2       Banking   	87        85        -2             11        
+
+Broker 3       Banking   	87        85        -2             11        
+
+Broker 4       Banking   	87        85        -2             11        
+
+Broker 1       Technology	151       148       -3             20        
+
+Broker 2       Technology	151       148       -3             20        
+
+Broker 3       Technology	151       148       -3             20        
+
+Broker 4       Technology	151       148       -3             20        
+
+Broker 1       Retail    	26        25        -1             7         
+
+Broker 4       Retail    	26        25        -1             7         
+
+Broker 2       Banking   	85        86        1              12        
+
+Broker 3       Banking   	85        86        1              12        
+
+Broker 4       Banking   	85        86        1              12        
+
+Broker 2       Commodity 	501       508       7              56        
+
+Broker 4       Commodity 	501       508       7              56        
+
+Broker 1       Technology	148       145       -3             23        
+
+Broker 2       Technology	148       145       -3             23        
+
+Broker 3       Technology	148       145       -3             23        
+
+Broker 4       Technology	148       145       -3             23        
+
+Broker 1       Retail    	25        24        -1             8         
+
+Broker 4       Retail    	25        24        -1             8         
+
+Broker 2       Banking   	86        85        -1             13        
+
+Broker 3       Banking   	86        85        -1             13        
+
+Broker 4       Banking   	86        85        -1             13        
+
+Broker 2       Commodity 	508       514       6              62        
+
+Broker 4       Commodity 	508       514       6              62        
+
