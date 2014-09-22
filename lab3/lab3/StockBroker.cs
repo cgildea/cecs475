@@ -10,6 +10,7 @@ namespace lab3
     class StockBroker
     {
         public static event EventHandler _stockPrint;
+        FilePrint fp = new FilePrint();
 
         public String BrokerName { get; private set; }
         public List<Stock> stocks { get; private set; }
@@ -26,27 +27,9 @@ namespace lab3
 
         void s_ThresholdReached(Object sender, ThresholdReachedEventArgs e)
         {
-            System.IO.StreamWriter file = new System.IO.StreamWriter("C:\\Users\\User\\dev\\cecs475\\lab3\\lab3\\lab3Output.txt", true);
-
-            if (e.difference > 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("{0,-15}{1,-10}\t{2,-10}{3,-10}{4,-15}{5,-10}\n", BrokerName, e.name, e.initialValue, e.currentValue, e.difference, e.changes);
-
-                file.WriteLine("{0,-15}{1,-10}\t{2,-10}{3,-10}{4,-15}{5,-10}\n", BrokerName, e.name, e.initialValue, e.currentValue, e.difference, e.changes);
-
-                file.Close();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("{0,-15}{1,-10}\t{2,-10}{3,-10}{4,-15}{5,-10}\n", BrokerName, e.name, e.initialValue, e.currentValue, e.difference, e.changes);
-
-                file.WriteLine("{0,-15}{1,-10}\t{2,-10}{3,-10}{4,-15}{5,-10}\n", BrokerName, e.name, e.initialValue, e.currentValue, e.difference, e.changes);
-
-                file.Close();
-            }
             
+
+            fp.PrintToFile(BrokerName, e.name, e.initialValue, e.currentValue, e.difference, e.changes, DateTime.Now);
         }
     }
 }

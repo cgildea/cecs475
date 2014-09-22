@@ -10,7 +10,7 @@ namespace lab3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("{0,-15}{1,-10}\t{2,-10}{3,-10}{4,-15}{5,-10}\n", "Broker", "Stock", "Initial", "Current", "Difference", "Changes");
+            Console.WriteLine("{0,-15}{1,-10}\t{2,-10}{3,-10}{4,-15}{5,-10}{6,-10}\n", "Broker", "Stock", "Initial", "Current", "Difference", "Changes", "Date");
 
             Stock stock1 = new Stock("Technology", 160, 5, 15);
             Stock stock2 = new Stock("Retail", 30, 2, 6);

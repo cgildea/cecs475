@@ -16,6 +16,8 @@ namespace lab3
         public int threshold{get; private set;}
         public int changes { get; private set; }
         public int difference { get; private set; }
+        public int stockChange { get; private set; }
+
 
         private Thread thread;
 
@@ -25,6 +27,7 @@ namespace lab3
             this.initialValue = initialValue;
             this.maxChange = maxChange;
             this.threshold = threshold;
+            this.changes = 0;
             thread = new Thread(new ThreadStart(Activate));
             thread.Start();
         }
@@ -41,11 +44,11 @@ namespace lab3
             if (currentValue < 0)
                 currentValue = 0;
 
-            changes += Math.Abs(currentValue - initialValue);
-
+            stockChange += Math.Abs(currentValue - initialValue);
+            changes++;
             ThresholdReachedEventArgs args = new ThresholdReachedEventArgs();
 
-            if (changes >= threshold)
+            if (stockChange >= threshold)
             {
                 this.difference = this.currentValue - this.initialValue;
                 args.name = this.name;
