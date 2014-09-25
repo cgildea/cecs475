@@ -1,0 +1,108 @@
+Broker 2       Banking   	91        94        3              4         9/25/2014 4:05:01 PM
+
+Broker 3       Banking   	91        94        3              4         9/25/2014 4:05:01 PM
+
+Broker 4       Banking   	91        94        3              4         9/25/2014 4:05:01 PM
+
+Broker 2       Commodity 	511       494       -17            4         9/25/2014 4:05:01 PM
+
+Broker 4       Commodity 	511       494       -17            4         9/25/2014 4:05:01 PM
+
+Broker 2       Banking   	94        92        -2             5         9/25/2014 4:05:02 PM
+
+Broker 3       Banking   	94        92        -2             5         9/25/2014 4:05:02 PM
+
+Broker 4       Banking   	94        92        -2             5         9/25/2014 4:05:02 PM
+
+Broker 2       Commodity 	494       485       -9             5         9/25/2014 4:05:02 PM
+
+Broker 4       Commodity 	494       485       -9             5         9/25/2014 4:05:02 PM
+
+Broker 2       Banking   	92        90        -2             6         9/25/2014 4:05:02 PM
+
+Broker 3       Banking   	92        90        -2             6         9/25/2014 4:05:02 PM
+
+Broker 4       Banking   	92        90        -2             6         9/25/2014 4:05:02 PM
+
+Broker 2       Commodity 	485       475       -10            6         9/25/2014 4:05:02 PM
+
+Broker 4       Commodity 	485       475       -10            6         9/25/2014 4:05:02 PM
+
+Broker 1       Technology	164       159       -5             7         9/25/2014 4:05:03 PM
+
+Broker 2       Technology	164       159       -5             7         9/25/2014 4:05:03 PM
+
+Broker 3       Technology	164       159       -5             7         9/25/2014 4:05:03 PM
+
+Broker 4       Technology	164       159       -5             7         9/25/2014 4:05:03 PM
+
+Broker 1       Retail    	29        27        -2             7         9/25/2014 4:05:03 PM
+
+Broker 4       Retail    	29        27        -2             7         9/25/2014 4:05:03 PM
+
+Broker 2       Banking   	90        93        3              7         9/25/2014 4:05:03 PM
+
+Broker 3       Banking   	90        93        3              7         9/25/2014 4:05:03 PM
+
+Broker 4       Banking   	90        93        3              7         9/25/2014 4:05:03 PM
+
+Broker 2       Commodity 	475       494       19             7         9/25/2014 4:05:03 PM
+
+Broker 4       Commodity 	475       494       19             7         9/25/2014 4:05:03 PM
+
+Broker 1       Technology	159       157       -2             8         9/25/2014 4:05:03 PM
+
+Broker 2       Technology	159       157       -2             8         9/25/2014 4:05:03 PM
+
+Broker 3       Technology	159       157       -2             8         9/25/2014 4:05:03 PM
+
+Broker 4       Technology	159       157       -2             8         9/25/2014 4:05:03 PM
+
+Broker 1       Retail    	27        27        0              8         9/25/2014 4:05:03 PM
+
+Broker 4       Retail    	27        27        0              8         9/25/2014 4:05:03 PM
+
+Broker 2       Banking   	93        94        1              8         9/25/2014 4:05:03 PM
+
+Broker 3       Banking   	93        94        1              8         9/25/2014 4:05:03 PM
+
+Broker 4       Banking   	93        94        1              8         9/25/2014 4:05:03 PM
+
+Broker 2       Commodity 	494       508       14             8         9/25/2014 4:05:03 PM
+
+Broker 4       Commodity 	494       508       14             8         9/25/2014 4:05:03 PM
+
+Broker 1       Technology	157       152       -5             9         9/25/2014 4:05:04 PM
+
+Broker 2       Technology	157       152       -5             9         9/25/2014 4:05:04 PM
+
+Broker 3       Technology	157       152       -5             9         9/25/2014 4:05:04 PM
+
+Broker 4       Technology	157       152       -5             9         9/25/2014 4:05:04 PM
+
+Broker 1       Retail    	27        26        -1             9         9/25/2014 4:05:04 PM
+
+Broker 4       Retail    	27        26        -1             9         9/25/2014 4:05:04 PM
+
+Broker 2       Banking   	94        94        0              9         9/25/2014 4:05:04 PM
+
+Broker 3       Banking   	94        94        0              9         9/25/2014 4:05:04 PM
+
+Broker 4       Banking   	94        94        0              9         9/25/2014 4:05:04 PM
+
+Broker 2       Commodity 	508       512       4              9         9/25/2014 4:05:04 PM
+
+Broker 4       Commodity 	508       512       4              9         9/25/2014 4:05:04 PM
+
+Broker 1       Technology	152       154       2              10        9/25/2014 4:05:04 PM
+
+Broker 2       Technology	152       154       2              10        9/25/2014 4:05:04 PM
+
+Broker 3       Technology	152       154       2              10        9/25/2014 4:05:04 PM
+
+Broker 4       Technology	152       154       2              10        9/25/2014 4:05:04 PM
+
+Broker 1       Retail    	26        27        1              10        9/25/2014 4:05:04 PM
+
+Broker 4       Retail    	26        27        1              10        9/25/2014 4:05:04 PM
+
