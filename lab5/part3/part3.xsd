@@ -54,8 +54,8 @@
     <xs:sequence>
       <xs:element name="title"      type="xs:string"/>
       <xs:element name="edition"    type="xs:string"/>
-      <xs:element name="isbn"       type="xs:positiveInteger"/>
-      <xs:element name="price"      type="xs:decimal"/>
+      <xs:element name="isbn"       type="xs:isbnType"/>
+      <xs:element name="price"      type="xs:priceType"/>
     </xs:sequence>
   </xs:complexType>
 
