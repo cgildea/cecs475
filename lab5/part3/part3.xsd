@@ -1,0 +1,98 @@
+﻿<?xml version = "1.0"?>
+
+
+<xs:schema
+    elementFormDefault   = "qualified"
+    attributeFormDefault = "unqualified"
+    xmlns:xs             = "http://www.w3.org/2001/XMLSchema">
+
+  <!--books element-->
+  <xs:element name="books" type="booksType"/>
+
+  <!--complexType for "books" element-->
+  <xs:complexType name="booksType">
+    <xs:sequence>
+      <xs:element name="book" minOccurs="1" maxOccurs="unbounded" type="bookType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--complexType for "book" element-->
+  <xs:complexType name="bookType">
+    <xs:sequence>
+      <xs:element name="author"     type="authorType"/>
+      <xs:element name="bookinfo"   type="bookinfoType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--complexType for "author" element-->
+  <xs:complexType name="authorType">
+    <xs:sequence>
+      <xs:element name="name"       type="nameType"/>
+      <xs:element name="contact"    type="contactType"/>
+    </xs:sequence>
+    <xs:attribute name="auid" type="auidType" use="required"/>
+  </xs:complexType>
+
+  <!--complexType for "name" element-->
+  <xs:complexType name="nameType">
+    <xs:sequence>
+      <xs:element name="fname"      type="xs:string"/>
+      <xs:element name="lname"      type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--complexType for "contact" element-->
+  <xs:complexType name="contactType">
+    <xs:sequence>
+      <xs:element name="email"      type="emailType"/>
+      <xs:element name="phone"      type="phoneType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--complexType for "bookinfo" element-->
+  <xs:complexType name="bookinfoType">
+    <xs:sequence>
+      <xs:element name="title"      type="xs:string"/>
+      <xs:element name="edition"    type="xs:string"/>
+      <xs:element name="isbn"       type="xs:positiveInteger"/>
+      <xs:element name="price"      type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--simpleType for "auid" attribute-->
+  <xs:simpleType name="auidType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--simpleType for "email" element-->
+  <xs:simpleType name="emailType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--simpleType for "phone" element-->
+  <xs:simpleType name="phoneType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{3}-[0-9]{7}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--simpleType for "isbn" element-->
+  <xs:simpleType name ="isbnType">
+    <xs:restriction base ="xs:string"/>
+  </xs:simpleType>
+
+  <!--simpleType for "price" element-->
+  <xs:simpleType name ="priceType">
+    <xs:restriction base ="xs:string"/>
+  </xs:simpleType>
+
+  <!--simpleType for "string" types-->
+  <xs:simpleType name ="stringType">
+    <xs:restriction base ="xs:string"/>
+  </xs:simpleType>
+
+</xs:schema>
