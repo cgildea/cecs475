@@ -1,6 +1,4 @@
 ﻿<?xml version = "1.0"?>
-
-
 <xs:schema
     elementFormDefault   = "qualified"
     attributeFormDefault = "unqualified"
@@ -54,8 +52,8 @@
     <xs:sequence>
       <xs:element name="title"      type="xs:string"/>
       <xs:element name="edition"    type="xs:string"/>
-      <xs:element name="isbn"       type="xs:isbnType"/>
-      <xs:element name="price"      type="xs:priceType"/>
+      <xs:element name="isbn"       type="isbnType"/>
+      <xs:element name="price"      type="priceType"/>
     </xs:sequence>
   </xs:complexType>
 
