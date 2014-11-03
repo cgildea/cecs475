@@ -28,14 +28,7 @@ namespace MvcMusicStore.Controllers
         // GET: /Store/
         public ActionResult Details(int id)
         {
-            var album = new Album
-            {
-                Title = "Sample Album",
-                Genre = new Genre { Name = "Sample Genre" },
-                Artist = new Artist { Name = "Sample Artist" },
-                AlbumArtUrl = "~/Content/Images/placeholder.gif",
-                Price = 9.99M
-            };
+            var album = this.storeDB.Albums.Find(id);
 
             if (album == null)
             {
@@ -48,11 +41,8 @@ namespace MvcMusicStore.Controllers
         public ActionResult Browse(string genre)
         {
             // Retrieve Genre and its Associated Albums from database
-            var genreModel = new Genre
-            {
-                Name = genre,
-                Albums = this.storeDB.Albums.ToList()
-            };
+            var genreModel = this.storeDB.Genres.Include("Albums")
+                 .Single(g => g.Name == genre);
 
             return this.View(genreModel);
         }
