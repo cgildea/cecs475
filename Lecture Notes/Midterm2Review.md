@@ -334,8 +334,8 @@ using (var ctx = new SchoolDBEntities())
 using (SchoolDBContext ctx = new SchoolDBContext())
 {
 	Student student = (from s in ctx.Students
-                       where s.StudentName == "Student3"
-                       select s).FirstOrDefault<Student>();
+        where s.StudentName == "Student3"
+        select s).FirstOrDefault<Student>();
     Course cours = student.Courses.FirstOrDefault<Course>();
     //removing course from student
     student.Courses.Remove(cours);
@@ -364,6 +364,83 @@ Retrieving data from multiple with LINQ
 Address Book Case Study
 Review the Entity Framework for database handout
 Add, update, delete records (one-to-one, one-to-many, and many-to-many)
+
+
+###Sorting with XSL (Lab 5, Problem 2)
+#####Solution is underneath the blanks
+```
+<!-- Solution: sorting_byPage.xsl -->
+<!-- Transformation of book information into XHTML -->
+
+<xsl:stylesheet version = "1.0" xmlns = "http://www.w3.org/1999/xhtml"
+xmlns:xsl = "http://www.w3.org/1999/XSL/Transform">
+
+  <!-- write XML declaration and DOCTYPE DTD information -->
+  <xsl:output method = "xml" omit-xml-declaration = "no"
+  doctype-system = "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+  doctype-public = "-//W3C//DTD XHTML 1.1//EN"/>
+
+  <!-- match document root -->
+  <xsl:template match = "/">
+    <html>
+      <xsl:apply-templates/>
+    </html>
+  </xsl:template>
+
+  <!-- match book -->
+  <xsl:template match = "book">
+    <head>
+      <title>
+        ISBN <xsl:value-of select = "@isbn"/> -
+        <xsl:value-of select = "title"/>
+      </title>
+    </head>
+
+    <body>
+      <h1 style = "color: blue">
+        <!--<xsl:value-of select ="title"/> -->
+        <xsl:value-of select ="title"/>
+      </h1>
+      <h2 style = "color: blue">
+        by
+        <!--  <______________________ = _______________________=""/> -->
+        <xsl:value-of select = "author/firstName"/>
+        <xsl:text> </xsl:text>
+        <!-- <______________________________________/> -->
+        <xsl:value-of select = "author/lastName"/>
+      </h2>
+
+      <table style = "border-style: groove; background-color: wheat">
+        <xsl:for-each select = "chapters//*">
+          <!--  <xsl:sort select ="____________________" data-type = "number" -->
+          <!--  _____________________________=""/> -->
+          <!-- Changed sort by number of "pages" instead of chapter "numbers" by specs -->
+          <xsl:sort select ="@pages" data-type = "number" order = "ascending"/>
+          <xsl:apply-templates select = "."/>
+        </xsl:for-each>
+      </table>
+
+      <p style = "color: blue">
+        Pages:
+        <xsl:variable name = "pagecount"
+        select = "sum(chapters//*/@pages)"/>
+        <xsl:value-of select = "$pagecount"/>
+        <br />Media Type: <xsl:value-of select = "media/@type"/>
+      </p>
+    </body>
+  </xsl:template>
+
+  <!-- match frontMatter element; override default and explicitly -->
+  <!-- do nothing as we handle the children separately -->
+  <xsl:template match = "chapters/frontMatter" />
+
+  <!-- match any front matter section -->
+  <xsl:template match = "chapters/frontMatter/*">
+    <tr>
+      <td style = "text-align: right">
+        <!-- <xsl:value-of select ="_____________________"/> -->
+        <xsl:value-of select ="name()"/>
+```
 
 
 
