@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<!-- nutrition.xml -->
+
+<!-- Nutritional information XML document -->
+	<nutrition xmlns="http://www.deitel.com/nutrition">
+	<productname>Grandma White's Cookies</productname>
+	<servingsize>28</servingsize>
+	<calories>140</calories>
+	<fatcalories>60</fatcalories>
+	<gramsfat>8</gramsfat>
+	<saturatedfat>2</saturatedfat>
+	<mgcholesterol>5</mgcholesterol>
+	<sodium>110</sodium>
+	<carbohydrates>15</carbohydrates>
+	<fiber>2</fiber>
+	<sugar>15</sugar>
+	<protein>1</protein>
+</nutrition>

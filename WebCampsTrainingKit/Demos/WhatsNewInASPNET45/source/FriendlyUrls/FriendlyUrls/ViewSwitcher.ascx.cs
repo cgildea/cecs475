@@ -1,0 +1,50 @@
+﻿// ----------------------------------------------------------------------------------
+// Microsoft Developer & Platform Evangelism
+// 
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// 
+// THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
+// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES 
+// OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+// ----------------------------------------------------------------------------------
+// The example companies, organizations, products, domain names,
+// e-mail addresses, logos, people, places, and events depicted
+// herein are fictitious.  No association with any real company,
+// organization, product, domain name, email address, logo, person,
+// places, or events is intended or should be inferred.
+// ----------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Microsoft.AspNet.FriendlyUrls;
+
+namespace FriendlyUrls
+{
+    public partial class ViewSwitcher : System.Web.UI.UserControl
+    {
+        protected string CurrentView { get; private set; }
+
+        protected string AlternateView { get; private set; }
+
+        protected string SwitchUrl { get; private set; }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            // Determine current view
+            var isMobile = WebFormsFriendlyUrlResolver.IsMobileView(new HttpContextWrapper(Context));
+            CurrentView = isMobile ? "Mobile" : "Desktop";
+
+            // Determine alternate view
+            AlternateView = isMobile ? "Desktop" : "Mobile";
+
+            // Create switch URL from the route, e.g. ~/__FriendlyUrls_SwitchView/Mobile?ReturnUrl=/Page
+            var url = GetRouteUrl("AspNet.FriendlyUrls.SwitchView", new { view = AlternateView });
+            url += "?ReturnUrl=" + HttpUtility.UrlEncode(Request.RawUrl);
+            SwitchUrl = url;
+        }
+    }
+}

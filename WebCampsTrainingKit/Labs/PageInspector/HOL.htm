@@ -1,0 +1,769 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Web Camps Training Kit - Home</title>
+    <link rel="Stylesheet" type="text/css" media="all" href="styles/master.css" />
+</head>
+<body>
+    <div id="outerWrapper">
+        <div id="wrapper" class="landingPage getStartedPage">
+            <div id="whiteBkgdStrip">
+            </div>
+            <div class="header">
+                <div class="heading">
+					<div class="mainHomepageTitle"></div>
+					<div class="logo-image"></div>
+					<div class="header-landscape landscape-image"></div>
+				<!--	<div class="clear"></div>-->
+				</div>
+				<div class="nav-menu-header">
+					<div class="AspNet-Menu-Horizontal" id="ctl00_TopNavMenu">
+						<ul class="AspNet-Menu">
+							<li class="AspNet-Menu-Leaf AspNet-Menu-Selected">
+								<a id="leftMenu" class="AspNet-Menu-Link AspNet-Menu-Selected" href="#">Content</a>
+							</li>
+							<li class="AspNet-Menu-Leaf">
+								<a id="rightMenu" class="AspNet-Menu-Link" href="Source">Setup</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+            </div>		
+            <div class="contentWrapper">
+			<a name="top"></a>
+
+
+<div class="genericInnerWrapper">
+		<div class="content">
+			<?xml version="1.0" encoding="iso-8859-1"?><span><p><a name="HOLTop"></a></p>
+
+<h1 id="Using_Page_Inspector_in_Visual_Studio_2012">Using Page Inspector in Visual Studio 2012</h1>
+
+<hr />
+
+<p><a name="Overview"></a></p>
+
+<h2 id="Overview">Overview</h2>
+
+<p>In this Hands-on Lab, you will discover a new tool to find and fix web page issues in Visual Studio - the Page Inspector.</p>
+
+<p>Page Inspector is a new tool that brings browser diagnostics tools to Visual Studio and provides an integrated experience among the browser, ASP.NET, and source code. It renders a web page (HTML, Web Forms, ASP.NET MVC, or Web Pages) directly within the Visual Studio IDE and lets you examine both the source code and the resulting output. Page Inspector enables you to easily decompose a website, rapidly build pages from the ground up, and quickly diagnose issues.</p>
+
+<p>Nowadays we have a number of Web frameworks that create flexible and scalable websites in a timely manner, such as ASP.NET MVC and WebForms. On the other hand, it gets harder to find issues on the pages because the IDE does not support the designer view in template-based pages and dynamic content. Therefore, these websites have to be opened in a browser to see how they appear to a user.</p>
+
+<p>Web developers use external tools to find issues that regularly run in the browser. Then, they return to the IDE and start fixing. This back and forth activity among the IDE, the browser and the profiling tools can be inefficient, and sometimes requires a fresh deployment and cache cleaning each time you want to reproduce an issue.</p>
+
+<p>Page Inspector bridges a gap in Web development between the client (browser tools) and the server (ASP.NET and source code) by bringing together the best of both worlds using a combined set of features.</p>
+
+<p>Using Page Inspector, you can see which elements in the source files (including server-side code) have produced the HTML markup to be rendered in the browser. Page Inspector also lets you modify CSS properties and DOM element attributes to see the changes reflected immediately in the browser.</p>
+
+<p>This hands-on lab will walk you through the Page Inspector features and show you how you can use them to fix issues in Web applications. <strong>This lab contains two exercises using similar flows but targeting different technologies. If you are an ASP.NET MVC Developer, follow exercise one; if you are a WebForms developer follow exercise two</strong>.</p>
+
+<p><a name="Objectives"></a></p>
+
+<h3 id="Objectives">Objectives</h3>
+
+<p>In this hands-on lab, you will learn how to:</p>
+
+<ul>
+<li><p>Decompose a Web Site using Page Inspector</p></li>
+<li><p>Inspect and preview CSS styles changes with Page Inspector</p></li>
+<li><p>Detect and fix issues in your web pages using Page Inspector</p></li>
+</ul>
+
+<p><a name="Prerequisites"></a></p>
+
+<h3 id="Prerequisites">Prerequisites</h3>
+
+<p>You must have the following items to complete this lab:</p>
+
+<ul>
+<li><p><a href="http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web">Microsoft Visual Studio Express 2012 for Web</a> or superior (read <a href="#AppendixA">Appendix A</a> for instructions on how to install it).</p></li>
+<li><p>Internet Explorer 9 or higher</p></li>
+</ul>
+
+<hr />
+
+<p><a name="Exercises"></a></p>
+
+<h2 id="Exercises">Exercises</h2>
+
+<p>This hands-on lab includes the following exercises:</p>
+
+<ol>
+<li><p><a href="#Exercise1">Exercise 1: Using Page Inspector in ASP.NET MVC Projects</a></p></li>
+<li><p><a href="#Exercise2">Exercise 2: Using Page Inspector in WebForms Projects</a></p></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Each exercise is accompanied by a starting solution, located in the Begin folder of the exercise, that allows you to follow each exercise independently of the others. Inside the source code for an exercise, you will also find an End folder containing a Visual Studio solution with the code that results from completing the steps in the corresponding exercise. You can use these solutions as guidance if you need additional help as you work through this hands-on lab.</p>
+</blockquote>
+<p>Estimated time to complete this lab: <strong>30 minutes</strong>.</p>
+
+<p><a name="Exercise1"></a></p>
+
+<h3 id="Exercise_1_Using_Page_Inspector_in_ASPNET_MVC_Projects">Exercise 1: Using Page Inspector in ASP.NET MVC Projects</h3>
+
+<p>In this exercise, you will learn how to preview and debug an <strong>ASP.NET MVC 4</strong> solution using <strong>Page Inspector</strong>. First, you will perform a brief lap around the tool to learn the features that facilitate the Web debugging process. Then, you will work in a web page that contains styling issues. You will learn how to use Page Inspector to find the source code that generates the issue and fix it.</p>
+
+<p><a name="Ex1Task1"></a></p>
+
+<h4 id="Task_1_-_Exploring_Page_Inspector">Task 1 - Exploring Page Inspector</h4>
+
+<p>In this task, you will learn how to use the Page Inspector in the context of an ASP.NET MVC 4 project that shows a photo gallery.</p>
+
+<ol>
+<li><p>Open the <strong>Begin</strong> solution located at <strong>Source/Ex1-MVC4/Begin/</strong> folder.</p>
+
+<ol>
+<li>You will need to download some missing NuGet packages before continue. To do this, click the <strong>Project</strong> menu and select <strong>Manage NuGet Packages</strong>.</li>
+<li>In the <strong>Manage NuGet Packages</strong> dialog, click <strong>Restore</strong> in order to download missing packages.</li>
+<li>Finally, build the solution by clicking <strong>Build</strong> | <strong>Build Solution</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.</p>
+</blockquote></li>
+<li><p>In the Solution Explorer, locate <strong>Index.cshtml</strong> view under the <strong>/Views/Home</strong> project folder, right-click it and select <strong>View in Page Inspector</strong>.</p>
+
+<p><img src="./images/Selecting-a-file-to-preview-in-Page-Inspector.png?raw=true" alt="Selecting a file to preview in Page Inspector" title="Selecting a file to preview in Page Inspector" />
+</p>
+
+<p><em>Selecting a file to preview in Page Inspector</em></p></li>
+<li><p>The Page Inspector window will show the <em>/Home/Index</em> URL mapped to the source View you selected. </p>
+
+<p><img src="images/ThefirstcontactwithPageInspector.png?raw=true" alt="ThefirstcontactwithPageInspector" />
+</p>
+
+<p><em>The first contact with Page Inspector</em></p>
+
+<p>The Page Inspector tool is integrated in your Visual Studio environment. The inspector contains an embedded browser, together with a powerful HTML profiler. Notice that you do not have to run the solution to see how your pages look.</p>
+<blockquote>
+<p><strong>Note:</strong> When the width of Page Inspector browser is less than the width of the opened page, you will not see the page properly. If that happens, adjust the width of the Page Inspector.</p>
+</blockquote></li>
+<li><p>Click the <strong>Files</strong> tab in Page Inspector.</p>
+
+<p>You will see all the source files that are composing the Index page. This feature helps to identify all the elements at a glance, especially when you are working with partial views and templates. Notice that you can also open each of the files if you click the links.</p>
+
+<p><img src="images/The-Files-tab1.png?raw=true" alt="The-Files-tab" />
+</p>
+
+<p><em>The Files tab</em></p></li>
+<li><p>Click the <strong>Toggle Inspection Mode</strong> button, located at the left of the tabs.</p>
+
+<p>This tool will let you select any element of the page and see its HTML and Razor code.</p>
+
+<p><img src="images/Toggle-Inspection-Mode-button1.png?raw=true" alt="Toggle-Inspection-Mode-button" />
+</p>
+
+<p><em>Toggle Inspection Mode button</em></p></li>
+<li><p>In the Page Inspector browser, move the mouse pointer over the page elements. While you move the mouse pointer over any part of the rendered page, the element type is displayed and the corresponding source markup or code is highlighted in the Visual Studio editor. </p>
+
+<p><img src="images/Inspectionmodeinaction.png?raw=true" alt="Inspectionmodeinaction" />
+</p>
+
+<p><em>Inspection mode in action</em></p>
+<blockquote>
+<p><strong>Note:</strong> Do not maximize the Page Inspector window or you will not be able to see the preview tab showing the source code. If you click the element in Page Inspector when it is maximized, the source code of the selection will appear but it will hide the Page Inspector window.</p>
+</blockquote>
+<p>If you pay attention to the <strong>Index.cshtml</strong> file, you will notice that the portion of source code that generates the selected element is highlighted. This feature facilitates the editing of long source files, providing a direct and fast way to access the code.</p>
+
+<p><img src="images/Inspectingelements.png?raw=true" alt="Inspectingelements" />
+</p>
+
+<p><em>Inspecting elements</em></p></li>
+<li><p>Click the <strong>Toggle Inspection Mode</strong> button (<img src="./images/Select-the-HTML-tab-to-display-the-HTML-code-rendered-in-the-Page-Inspector-browser..png?raw=true" alt="Select the HTML tab to display the HTML code rendered in the Page Inspector browser." title="Select the HTML tab to display the HTML code rendered in the Page Inspector browser." />
+) to disable the cursor.</p></li>
+<li><p>Select the <strong>HTML</strong> tab to display the HTML code rendered in the Page Inspector browser.</p></li>
+<li><p>In the HTML markup, locate the list item with the Koala link and select it.</p>
+
+<p>Notice that when you select the code, the corresponding output is automatically highlighted in the browser. This feature is useful to see how an HTML block is rendered on the page.</p>
+
+<p><img src="./images/Selecting-HTML-element-in-the-page.png?raw=true" alt="Selecting HTML element in the page" title="Selecting HTML element in the page" />
+</p>
+
+<p><em>Selecting HTML element in the page</em></p></li>
+<li><p>Click the <strong>Toggle Inspection Mode</strong> button to enable <em>Inspection Mode</em> and click the navigation bar. On the right of the HTML code, in the Styles pane, you will see a list with the CSS styles applied to the selected element.</p>
+<blockquote>
+<p><strong>Note:</strong> Since the header is a part of the site layout, Page Inspector will also open _Layout.cshtml file and highlight the segment of code affected.</p>
+</blockquote>
+<p><img src="images/Discoveringstyles.png?raw=true" alt="Discoveringstyles" />
+</p>
+
+<p><em>Discovering styles and source files of a selected element</em></p></li>
+<li><p>With the toggle inspection pointer enabled, move the mouse pointer below the blue featured bar and click the half circle.</p>
+
+<p><img src="./images/Selecting-an-element.png?raw=true" alt="Selecting an element" title="Selecting an element" />
+</p>
+
+<p><em>Selecting an element</em></p></li>
+<li><p>In the Styles pane, locate the <strong>background-image</strong> item under the <strong>.main-content</strong> group. <strong>Uncheck</strong> the <strong>background-image</strong> and see what happens. You will notice that the browser will reflect the changes immediately and the circle is hidden.</p>
+<blockquote>
+<p><strong>Note:</strong> The changes you apply on the Page Inspector Styles tab do not affect the original stylesheet. You can uncheck styles or change their values as many times as you want, but they will be restored after refreshing the page.</p>
+</blockquote>
+<p><img src="./images/Enabling-and-disabling-CSS-styles.png?raw=true" alt="Enabling and disabling CSS styles" title="Enabling and disabling CSS styles" />
+</p>
+
+<p><em>Enabling and disabling CSS styles</em></p></li>
+<li><p>Now, click the '<strong>your logo here</strong>' text on the header using the inspection mode.</p></li>
+<li><p>In the <strong>Styles</strong> tab, locate the <strong>font-size</strong> CSS attribute under the <strong>.site-title</strong> group. Double-click the attribute value and replace the 2.3 em value with <strong>3 em</strong>, and then press <strong>ENTER</strong>. Notice that the title looks bigger.</p>
+
+<p><img src="./images/Changing-CSS-values-in-the-Page-Inspector.png?raw=true" alt="Changing CSS values in the Page Inspector" title="Changing CSS values in the Page Inspector" />
+</p>
+
+<p><em>Changing CSS values in the Page Inspector</em></p></li>
+<li><p>Click the <strong>Trace Styles</strong> tab, located in the right pane of Page Inspector. This is an alternative way to see all the styles applied to the selection, ordered by attribute name.</p>
+
+<p><img src="images/CSSstylestracing.png?raw=true" alt="CSSstylestracing" />
+</p>
+
+<p><em>CSS styles tracing of the selected element</em></p></li>
+<li><p>Another feature of Page Inspector is the Layout pane. Using the inspection mode, select the navigation bar and then click the <strong>Layout</strong> tab on the right pane. You will see the exact size of the selected element, as well as its offset, margin, padding and border size. Notice that you can also modify the values from this view.</p>
+
+<p><img src="./images/Element-layout-in-Page-Inspector.png?raw=true" alt="Element layout in Page Inspector" title="Element layout in Page Inspector" />
+</p>
+
+<p><em>Element layout in Page Inspector</em></p></li>
+</ol>
+
+<p><a name="Ex1Task2"></a></p>
+
+<h4 id="Task_2_-_Finding_and_Fixing_Style_Issues_in_the_Photo_Gallery">Task 2 - Finding and Fixing Style Issues in the Photo Gallery</h4>
+
+<p>How would you diagnose Web pages issues with previous versions of Visual Studio? You are likely familiar with web debugging tools that run outside the Visual Studio IDE, like Internet Explorer Developer Tools or Firebug. Browsers only understand HTML, scripting and styles, while an underlying framework generates the HTML that will be rendered. For that reason, you often need to deploy the whole site to see how web pages look like.</p>
+
+<p>You had probably followed these steps when you wanted to detect and fix an issue in your web site:</p>
+
+<ol>
+<li><p>Run the Solution from Visual Studio, or deploy the page on the web server.</p></li>
+<li><p>In the browser, open the developer tools you use, or simply open the source code and the styles and try to match the issue.
+To find the files involved, you would have used the &quot;Search&quot; or &quot;Search in files&quot; features with the name of the style classes.</p></li>
+<li><p>Once the error is detected, stop the Web browser and the server.</p></li>
+<li><p>Clear the browser cache.</p></li>
+<li><p>Return to Visual Studio to apply a fix. Repeat all the steps to test.</p></li>
+</ol>
+
+<p>As there is no real WYSIWYG in ASP.NET MVC 4, most of the style issues are detected on a later stage, after running or deploying the web application. Now, with Page Inspector, it is possible to preview any page without running the solution.</p>
+
+<p>In this task, you will use the Page inspector and fix some issues the Photo Gallery application.</p>
+
+<ol>
+<li><p>Using Page Inspector, locate the <strong>Register</strong> and the <strong>Log in</strong> links at the left side of the header.</p>
+
+<p>Notice that the links are not displayed at the expected place on the right, and they are shown like a bulleted list. You will now align the links to the right and restyle them accordingly.</p>
+
+<p><img src="./images/Locating-the-Register-and-Log-on-links.png?raw=true" alt="Locating the Register and Log in links" title="Locating the Register and Log in links" />
+</p>
+
+<p><em>Locating the Register and Log in links</em></p></li>
+<li><p>With Toggle Inspection Mode selected, click close to, but not on, the Register link to open its code.</p>
+
+<p>Notice that the source code of the links is located in the <strong>_LoginPartial.cshtml</strong> file, not the Index.cshtml nor the _Layout.cshtml, which are the places you might look in first place. You have been placed directly in the correct source file.</p></li>
+<li><p>In the <strong>Styles</strong> tab, locate and click the <strong><section> #login</section></strong> item, which is the HTML container for these links.</p>
+
+<p>Notice that the <strong>#login</strong> style is automatically located in <strong>Site.css</strong> after you click. Moreover, the code is now highlighted.</p>
+
+<p><img src="./images/Selecting-the-CSS-styles.png?raw=true" alt="Selecting the CSS styles" title="Selecting the CSS styles" />
+</p>
+
+<p><em>Selecting the CSS styles</em></p></li>
+<li><p>Uncomment the <strong>text-align</strong> attribute in the highlighted code by removing the opening and closing characters and save the <strong>Site.css</strong> file.</p>
+
+<p>Page Inspector is aware of all the different files that compose the current page, and it can detect when any of these files change. It alerts you whenever the current page in browser is not in sync with the source files.</p></li>
+<li><p>In the Page Inspector browser, click the bar located below the address bar to reload the page.</p>
+
+<p><img src="images/Reloading the page.png?raw=true" alt="Reloading the page" />
+</p>
+
+<p><em>Reloading the page</em></p>
+
+<p>The links are now at the right, but they still look like a bulleted list. Now, you will remove the bullets and align the links horizontally.</p>
+
+<p><img src="images/reloading-the-page3.png?raw=true" alt="Updated page" />
+</p>
+
+<p><em>Updated page</em></p></li>
+<li><p>Using the inspection mode, select any of the <strong>&lt;li&gt;</strong> items that contain the &quot;Register&quot; and &quot;Log in&quot; links. Then, click the <strong>&lt;section&gt; #login</strong> item to access <strong>Styles.css</strong> code.</p>
+
+<p><img src="./images/Finding-the-style.png?raw=true" alt="Finding the style" title="Finding the style" />
+</p>
+
+<p><em>Finding the style</em></p></li>
+<li><p>In <strong>Style.css</strong>, uncomment the code for <strong>#login li</strong> items. The style you are adding will hide the bullet and display the items horizontally.</p>
+
+<p><img src="./images/Restyling-the-login-links.png?raw=true" alt="Restyling the login links" title="Restyling the login links" />
+</p>
+
+<p><em>Restyling the login links</em></p></li>
+<li><p>Save <strong>Style.css</strong> file and click once on the bar located below the address to reload the page. Notice that the links appear correctly.</p>
+
+<p><img src="./images/Links-aligned-to-the-right-side.png?raw=true" alt="Links aligned to the right side" title="Links aligned to the right side" />
+</p>
+
+<p><em>Links aligned to the right side</em></p></li>
+<li><p>Finally, you will change the header title. Use the inspection mode to click <strong>your logo here</strong> text and get to the source code that generates it.</p></li>
+<li><p>Now you are in <strong>_Layout.cshtml</strong>, replace '<strong>your logo here</strong>' text with '<strong>Photo Gallery</strong>'. Save and update the Page Inspector browser.</p>
+
+<p><img src="./images/Assigning-a-new-title.png?raw=true" alt="Assigning a new title" title="Assigning a new title" />
+</p>
+
+<p><em>Assigning a new title</em></p>
+
+<p><img src="images/PhotoGallerypage.png?raw=true" alt="PhotoGallerypage" />
+</p>
+
+<p><em>Photo Gallery page updated</em></p></li>
+<li><p>Finally, selet the <strong>PhotoGallery</strong> project and press <strong>F5</strong> to run the app. Check out all the changes work as expected.</p></li>
+</ol>
+
+<hr />
+
+<p><a name="Exercise2"></a></p>
+
+<h3 id="Exercise_2_Using_Page_Inspector_in_WebForms_Projects">Exercise 2: Using Page Inspector in WebForms Projects</h3>
+
+<p>In this exercise, you will learn how to preview and debug a WebForms solution using Page Inspector. You will first perform a brief lap around the tool to learn the Page Inspector features that facilitate the Web debugging process. Then, you will work in a web page that contains styling issues. You will learn how to use Page Inspector to find the source code that generates the issue and fix it.</p>
+
+<p><a name="Ex2Task1"></a></p>
+
+<h4 id="Task_1_-_Exploring_Page_Inspector">Task 1 - Exploring Page Inspector</h4>
+
+<p>In this task, you will learn how to use the Page Inspector features in the context of a WebForms project that shows a photo gallery.</p>
+
+<ol>
+<li><p>Open the <strong>Begin</strong> solution located at <strong>Source/Ex2-WebForms/Begin/</strong> folder.</p>
+
+<ol>
+<li>You will need to download some missing NuGet packages before continue. To do this, click the <strong>Project</strong> menu and select <strong>Manage NuGet Packages</strong>.</li>
+<li>In the <strong>Manage NuGet Packages</strong> dialog, click <strong>Restore</strong> in order to download missing packages.</li>
+<li>Finally, build the solution by clicking <strong>Build</strong> | <strong>Build Solution</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.</p>
+</blockquote></li>
+<li><p>In the Solution Explorer, locate <strong>Default.aspx</strong> page, right-click it and select <strong>View in Page Inspector</strong>.</p>
+
+<p><img src="./images/Opening-Default.aspx-with-Page-Inspector.png?raw=true" alt="Opening Default.aspx with Page Inspector" title="Opening Default.aspx with Page Inspector" />
+</p>
+
+<p><em>Opening Default.aspx with Page Inspector</em></p></li>
+<li><p>The Page Inspector window will show Default.aspx. </p>
+
+<p><img src="./images/Viewing-Default.aspx-in-Page-Inspector.png?raw=true" alt="Viewing Default.aspx in Page Inspector" title="Viewing Default.aspx in Page Inspector" />
+</p>
+
+<p><em>Viewing Default.aspx in Page Inspector</em></p>
+
+<p>The Page Inspector tool is integrated in your Visual Studio environment. The inspector contains an embedded browser, together with a powerful HTML profiler that will show the selected code. Notice that you do not have to run the solution to see how your pages look.</p>
+<blockquote>
+<p><strong>Note:</strong> When the width of Page Inspector browser is less than the width of the opened page, you will not see the page properly. If that happens, adjust the width of the Page Inspector.</p>
+</blockquote></li>
+<li><p>Click the <strong>Files</strong> tab in Page Inspector. </p>
+
+<p>You will see all the source files that are composing the rendered Default page. This is a useful feature to identify all the elements at a glance, especially when you are working with User Controls and Master Pages. Notice that you can also navigate to each of the files.</p>
+
+<p><img src="./images/The-Files-tab2.png?raw=true" alt="The Files tab" title="The Files tab" />
+</p>
+
+<p><em>The Files tab</em></p></li>
+<li><p>Click the <strong>Toggle Inspection Mode</strong> button, located at the left of the tabs.</p>
+
+<p>This tool will let you select any element of the page and see its HTML code and .aspx source.</p>
+
+<p><img src="./images/Toggle-Inspection-Mode-button.png?raw=true" alt="Toggle Inspection Mode button" title="Toggle Inspection Mode button" />
+</p>
+
+<p><em>Toggle Inspection Mode button</em></p></li>
+<li><p>In the Page Inspector browser, move the mouse over the page elements. While you move the mouse pointer over any part of the rendered page, the element type is displayed and the corresponding source markup or code is highlighted in the Visual Studio editor.  </p>
+
+<p><img src="./images/Inspection-mode-in-action.png?raw=true" alt="Inspection mode in action" title="Inspection mode in action" />
+</p>
+
+<p><em>Inspection mode in action</em></p>
+<blockquote>
+<p><strong>Note:</strong> Do not maximize the Page Inspector window or you will not be able to see the preview tab showing the source code. If you click the element in Page Inspector when it is maximized, the source code of the selection will appear but it will hide the Page Inspector window.</p>
+</blockquote>
+<p>If you pay attention to <strong>Default.aspx</strong> file, you will notice that the portion of source code that generates the selected element is highlighted. This feature facilitates the edition of long source files, providing a direct and fast way to access the code.</p>
+
+<p><img src="./images/Inspecting-elements.png?raw=true" alt="Inspecting elements" title="Inspecting elements" />
+</p>
+
+<p><em>Inspecting elements</em></p></li>
+<li><p>Click the <strong>Toggle Inspection Mode</strong> button (<img src="./images/Select-the-HTML-tab-to-display-the-HTML-code-rendered-in-the-Page-Inspector-browser..png?raw=true" alt="Select-the-HTML-tab-to-display-the-HTML-code-rendered-in-the-Page-Inspector-browser." title="Select-the-HTML-tab-to-display-the-HTML-code-rendered-in-the-Page-Inspector-browser." />
+), located in Page Inspector tabs, to disable the cursor.</p></li>
+<li><p>Select the <strong>HTML</strong> tab to display the HTML code rendered in the Page Inspector browser.</p></li>
+<li><p>In the HTML code, locate the list item with the Koala link and select it.</p>
+
+<p>Notice that when you select the code, the corresponding output is automatically highlighted browser. This feature is useful to see how an HTML block is rendered on the page.</p>
+
+<p><img src="./images/Selecting-an-HTML-element-in-the-page.png?raw=true" alt="Selecting an HTML element in the page" title="Selecting an HTML element in the page" />
+</p>
+
+<p><em>Selecting an HTML element in the page</em></p></li>
+<li><p>Click the <strong>Toggle Inspection Mode</strong> button to enable <em>Inspection Mode</em> and click the navigation bar. On the right of the HTML code, in the Styles pane, you will see a list with the CSS styles applied to the selected element.</p>
+<blockquote>
+<p><strong>Note:</strong> since the header is a part of the site layout, Page Inspector will also open Site.Master file and highlight the segment of code affected.</p>
+</blockquote>
+<p><img src="./images/DiscoveringstylesWebForms.png?raw=true" alt="DiscoveringstylesWebForms" title="Discovering styles and source files of a selected element" />
+</p>
+
+<p><em>Discovering styles and source files of a selected element</em></p></li>
+<li><p>With the toggle inspection pointer enabled, move the mouse pointer below the menu bar and click the blank half circle.</p>
+
+<p><img src="./images/Selecting-an-element-WebForms.png?raw=true" alt="Selecting an element" title="Selecting an element" />
+</p>
+
+<p><em>Selecting an element</em></p></li>
+<li><p>In the Styles pane, locate the <strong>background-image</strong> item under the <strong>.main-content</strong> group. <strong>Uncheck</strong> the <strong>background-image</strong> and see what happens. You will notice that the browser will reflect the changes immediately and the circle is hidden.</p>
+<blockquote>
+<p><strong>Note:</strong> The changes you apply on the Page Inspector Styles tab do not affect the original stylesheet. You can uncheck styles or change their values as many times as you want, but they will be restored after refreshing the page.</p>
+</blockquote>
+<p><img src="./images/Enabling-and-disabling-CSS-styles2.png?raw=true" alt="Enabling and disabling CSS styles2" title="Enabling and disabling CSS styles" />
+</p>
+
+<p><em>Enabling and disabling CSS styles</em></p></li>
+<li><p>Now, click the '<strong>your</strong> <strong>logo here'</strong> text on the header using the inspection mode.</p></li>
+<li><p>In the <strong>Styles</strong> tab, locate the <strong>font-size</strong> CSS attribute under the <strong>.site-title</strong> group. Double-click the attribute once to edit its value. Replace the 2.3em value with <strong>3em</strong>, and then press ENTER. Notice that the title looks bigger.</p>
+
+<p><img src="./images/Changing-CSS-values-in-the-Page-Inspector.png?raw=true" alt="Changing CSS values in the Page Inspector2" title="Changing CSS values in the Page Inspector" />
+</p>
+
+<p><em>Changing CSS values in the Page Inspector</em></p></li>
+<li><p>Click the <strong>Trace Styles</strong> tab, located in the right pane of Page Inspector. This is an alternative way to see all the styles applied to the selection, ordered by attribute name.</p>
+
+<p><img src="./images/CSS-styles-tracing-of-the-selected-element.png?raw=true" alt="CSS styles tracing of the selected element" title="CSS styles tracing of the selected element" />
+</p>
+
+<p><em>CSS styles tracing of the selected element</em></p></li>
+<li><p>Another feature of Page Inspector is the Layout pane. Using the inspection mode, select the navigation bar and then click the <strong>Layout</strong> tab on the right pane. You will see the exact size of the selected element, as well as its offset, margin, padding and border size. Notice that you can also modify the values from this view.</p>
+
+<p><img src="./images/Element-layout-in-Page-Inspector.png?raw=true" alt="Element layout in Page Inspector" title="Element layout in Page Inspector" />
+</p>
+
+<p><em>Element layout in Page Inspector</em></p></li>
+</ol>
+
+<p><a name="Ex2Task2"></a></p>
+
+<h4 id="Task_2_-_Finding_and_Fixing_Style_Issues_in_the_Photo_Gallery">Task 2 - Finding and Fixing Style Issues in the Photo Gallery</h4>
+
+<p>How would you diagnose Web pages issues with previous versions of Visual Studio? You are likely familiar with web debugging tools that run outside the Visual Studio IDE, like Internet Explorer Developer Tools or Firebug. Browsers only understand HTML, scripting and styles, while an underlying framework generates the HTML that will be rendered. For that reason, you often need to deploy the whole site to see how web pages look like.</p>
+
+<p>You had probably followed these steps when you wanted to detect and fix an issue in your web site:</p>
+
+<ol>
+<li><p>Run the Solution from Visual Studio, or deploy the page on the web server.</p></li>
+<li><p>In the browser, open the developer tools you use, or simply open the source code and the styles and try to match the issue.
+To find the files involved, you'd have used the &quot;Search&quot; or &quot;Search in files&quot; features with the name of the style classes.</p></li>
+<li><p>Once the error is detected, stop the Web browser and the server.</p></li>
+<li><p>Clear the browser cache.</p></li>
+<li><p>Return to Visual Studio to apply a fix. Repeat all the steps to test.</p></li>
+</ol>
+
+<p>As there is no real WYSIWYG in ASP.NET WebForms, some style issues are detected on a later stage, after running or deploying. Now, with Page Inspector, it is possible to preview any page without running the solution.</p>
+
+<p>In this task, you will use the Page inspector for fixing some issues of the Photo Gallery application. In the following steps, you will detect and quickly fix some simple styling issue in the header.</p>
+
+<ol>
+<li><p>Using Page Inspection, locate the <strong>Register</strong> and the <strong>Log In</strong> links at the left side of the header.</p>
+
+<p>Notice that the link is not displayed at the expected place on the right. You will now align the link to the right and restyle it accordingly.</p>
+
+<p><img src="./images/Locating-the-Register-and-Log-on-links.png?raw=true" alt="Log in link positioned on the left" title="Log in link positioned on the left" />
+</p>
+
+<p><em>Log In link positioned on the left</em></p></li>
+<li><p>With Toggle Inspection Mode selected, select the Log In link to open its code.</p>
+
+<p>Notice that the link source code is located in the <strong>Site.Master</strong> file, not in the Default.aspx page which is the place you might look in first place; you have been placed directly in the correct source file.</p></li>
+<li><p>In the <strong>Styles</strong> tab, locate and click the <strong>&lt;section&gt; #login</strong> item, which is the HTML container for these links.</p>
+
+<p>Notice that the <strong>#login</strong> style is automatically located in <strong>Site.css</strong> after you click. Moreover, the code is now highlighted.</p>
+
+<p><img src="./images/Selecting-the-CSS-styles.png?raw=true" alt="Selecting the CSS styles" title="Selecting the CSS styles" />
+</p>
+
+<p><em>Selecting the CSS styles</em></p></li>
+<li><p>Uncomment the <strong>text-align</strong> attribute in the highlighted code by removing the opening and closing characters and save the <strong>Site.css</strong> file.</p>
+
+<p>Page Inspector is aware of all the different files that compose the current page, and it can detect when any of these files change. It alerts you whenever the current page in browser is not in sync with the source files.</p></li>
+<li><p>In the Page Inspector browser, click the bar located below the address bar to save the changes and reload the page.</p>
+
+<p><img src="images/Reloadingthepage.png?raw=true" alt="Reloadingthepage" />
+</p>
+
+<p><em>Reloading the page</em></p>
+
+<p>The links are now at the right, but they still look like a bulleted list. Now, you will remove the bullets and align the links horizontally.</p>
+
+<p><img src="images/reloading-the-page3.png?raw=true" alt="Updated page" />
+</p>
+
+<p><em>Updated page</em></p></li>
+<li><p>Using the inspection mode, select any of the <strong>&lt;li&gt;</strong> items that contain the &quot;Register&quot; and &quot;Log in&quot; links. Then, click the <strong>&lt;section&gt; #login</strong> item to access <strong>Styles.css</strong> code.</p>
+
+<p><img src="./images/Finding-the-style.png?raw=true" alt="Finding the style" title="Finding the style" />
+</p>
+
+<p><em>Finding the style</em></p></li>
+<li><p>In <strong>Style.css</strong>, uncomment the code for <strong>#login li</strong> items. The style you are adding will hide the bullet and display the items horizontally.</p>
+
+<p><img src="./images/Restyling-the-login-links.png?raw=true" alt="Restyling the login links" title="Restyling the login links" />
+</p>
+
+<p><em>Restyling the login links</em></p></li>
+<li><p>Save <strong>Style.css</strong> file and click once on the bar located below the address to reload the page. Notice that the links appear correctly.</p>
+
+<p><img src="./images/Links-aligned-to-the-right-side.png?raw=true" alt="Links aligned to the right side" title="Links aligned to the right side" />
+</p>
+
+<p><em>Links aligned to the right side</em></p></li>
+<li><p>Finally, you will change the header title. Instead of searching for the '<strong>your logo here'</strong> text in all the files, use the inspection mode to click the text and get to source code that generates it.</p>
+
+<p><img src="./images/Finding-the-site-title.png?raw=true" alt="Finding the site title" title="Finding the site title" />
+</p>
+
+<p><em>Finding the site title</em></p></li>
+<li><p>Now you are in <strong>Site.Master</strong>, replace the '<strong>your logo here</strong>' text with '<strong>Photo Gallery</strong>'. Save and update the Page Inspector browser.</p>
+
+<p><img src="./images/PhotoGallerypage.png?raw=true" alt="Photo Gallery page updated" title="Photo Gallery page updated" />
+</p>
+
+<p><em>Photo Gallery page updated</em></p></li>
+<li><p>Finally press <strong>F5</strong> to run the app the check out all the changes work as expected.</p></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Additionally, you can deploy this application to Windows Azure Web Sites following <a href="#AppendixB">Appendix B: Publishing an ASP.NET MVC 4 Application using Web Deploy</a>.</p>
+</blockquote>
+<hr />
+
+<p><a name="Summary"></a></p>
+
+<h2 id="Summary">Summary</h2>
+
+<p>By completing this Hands-On Lab, you have learnt how to use Page Inspector to preview your Web application without having to rebuild and run the Web site in a browser. In addition, you have learnt how to quickly find and fix bugs by accessing directly from the rendered output to the source code.</p>
+
+<p><a name="AppendixA"></a></p>
+
+<h2 id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web">Appendix A: Installing Visual Studio Express 2012 for Web</h2>
+
+<p>You can install <strong>Microsoft Visual Studio Express 2012 for Web</strong> or another &quot;Express&quot; version using the <strong><a href="http://www.microsoft.com/web/downloads/platform.aspx">Microsoft Web Platform Installer</a></strong>. The following instructions guide you through the steps required to install <em>Visual studio Express 2012 for Web</em> using <em>Microsoft Web Platform Installer</em>.</p>
+
+<ol>
+<li><p>Go to <a href="http://go.microsoft.com/?linkid=9810169"><a href="http://go.microsoft.com/?linkid=9810169">http://go.microsoft.com/?linkid=9810169</a></a>. Alternatively, if you already have installed Web Platform Installer, you can open it and search for the product &quot;<em>Visual Studio Express 2012 for Web with Windows Azure SDK</em>&quot;.</p></li>
+<li><p>Click on <strong>Install Now</strong>. If you do not have <strong>Web Platform Installer</strong> you will be redirected to download and install it first.</p></li>
+<li><p>Once <strong>Web Platform Installer</strong> is open, click <strong>Install</strong> to start the setup.</p>
+
+<p><img src="images/install-visual-studio-express.png?raw=true" alt="Install Visual Studio Express" title="Install Visual Studio Express" />
+</p>
+
+<p><em>Install Visual Studio Express</em></p></li>
+<li><p>Read all the products' licenses and terms and click <strong>I Accept</strong> to continue.</p>
+
+<p><img src="images/accepting-the-license-terms.png?raw=true" alt="Accepting the license terms" />
+</p>
+
+<p><em>Accepting the license terms</em></p></li>
+<li><p>Wait until the downloading and installation process completes.</p>
+
+<p><img src="images/installation-progress.png?raw=true" alt="Installation progress" />
+</p>
+
+<p><em>Installation progress</em></p></li>
+<li><p>When the installation completes, click <strong>Finish</strong>.</p>
+
+<p><img src="images/installation-completed.png?raw=true" alt="Installation completed" />
+</p>
+
+<p><em>Installation completed</em></p></li>
+<li><p>Click <strong>Exit</strong> to close Web Platform Installer.</p></li>
+<li><p>To open Visual Studio Express for Web, go to the <strong>Start</strong> screen and start writing &quot;<strong>VS Express</strong>&quot;, then click on the <strong>VS Express for Web</strong> tile.</p>
+
+<p><img src="images/vs-express-for-web-tile.png?raw=true" alt="VS Express for Web tile" />
+</p>
+
+<p><em>VS Express for Web tile</em></p></li>
+</ol>
+
+<p><a name="AppendixB"></a></p>
+
+<h2 id="Appendix_B_Publishing_an_ASPNET_MVC_4_Application_using_Web_Deploy">Appendix B: Publishing an ASP.NET MVC 4 Application using Web Deploy</h2>
+
+<p>This appendix will show you how to create a new web site from the Windows Azure Management Portal and publish the application you obtained by following the lab, taking advantage of the Web Deploy publishing feature provided by Windows Azure.</p>
+
+<p><a name="ApxBTask1"></a></p>
+
+<h4 id="Task_1_-_Creating_a_New_Web_Site_from_the_Windows_Azure_Portal">Task 1 - Creating a New Web Site from the Windows Azure Portal</h4>
+
+<ol>
+<li><p>Go to the <a href="https://manage.windowsazure.com/">Windows Azure Management Portal</a> and sign in using the Microsoft credentials associated with your subscription.</p>
+<blockquote>
+<p><strong>Note:</strong> With Windows Azure you can host 10 ASP.NET Web Sites for free and then scale as your traffic grows. You can sign up <a href="http://aka.ms/aspnet-hol-azure">here</a>.</p>
+</blockquote>
+<p><img src="images/login.png?raw=true" alt="Log on to Windows Azure portal" title="Log on to Windows Azure portal" />
+</p>
+
+<p><em>Log on to Windows Azure Management Portal</em></p></li>
+<li><p>Click <strong>New</strong> on the command bar.</p>
+
+<p><img src="images/new-website.png?raw=true" alt="Creating a new Web Site" title="Creating a new Web Site" />
+</p>
+
+<p><em>Creating a new Web Site</em></p></li>
+<li><p>Click <strong>Compute</strong> | <strong>Web Site</strong>. Then select <strong>Quick Create</strong> option. Provide an available URL for the new web site and click <strong>Create Web Site</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> A Windows Azure Web Site is the host for a web application running in the cloud that you can control and manage. The Quick Create option allows you to deploy a completed web application to the Windows Azure Web Site from outside the portal. It does not include steps for setting up a database.</p>
+</blockquote>
+<p><img src="images/quick-create.png?raw=true" alt="Creating a new Web Site using Quick Create" title="Creating a new Web Site using Quick Create" />
+</p>
+
+<p><em>Creating a new Web Site using Quick Create</em></p></li>
+<li><p>Wait until the new <strong>Web Site</strong> is created.</p></li>
+<li><p>Once the Web Site is created click the link under the <strong>URL</strong> column. Check that the new Web Site is working.</p>
+
+<p><img src="images/navigate-website.png?raw=true" alt="Browsing to the new web site" title="Browsing to the new web site" />
+</p>
+
+<p><em>Browsing to the new web site</em></p>
+
+<p><img src="images/website-working.png?raw=true" alt="Web site running" title="Web site running" />
+</p>
+
+<p><em>Web site running</em></p></li>
+<li><p>Go back to the portal and click the name of the web site under the <strong>Name</strong> column to display the management pages.</p>
+
+<p><img src="images/go-to-the-dashboard.png?raw=true" alt="Opening the web site management pages" title="Opening the web site management pages" />
+</p>
+
+<p><em>Opening the Web Site management pages</em></p></li>
+<li><p>In the <strong>Dashboard</strong> page, under the <strong>quick glance</strong> section, click the <strong>Download publish profile</strong> link.</p>
+<blockquote>
+<p><strong>Note:</strong> The <em>publish profile</em> contains all of the information required to publish a web application to a Windows Azure website for each enabled publication method. The publish profile contains the URLs, user credentials and database strings required to connect to and authenticate against each of the endpoints for which a publication method is enabled. <strong>Microsoft WebMatrix 2</strong>, <strong>Microsoft Visual Studio Express for Web</strong> and <strong>Microsoft Visual Studio 2012</strong> support reading publish profiles to automate configuration of these programs for publishing web applications to Windows Azure websites. </p>
+</blockquote>
+<p><img src="images/download-publish-profile.png?raw=true" alt="Downloading the web site publish profile" title="Downloading the web site publish profile" />
+</p>
+
+<p><em>Downloading the Web Site publish profile</em></p></li>
+<li><p>Download the publish profile file to a known location. Further in this exercise you will see how to use this file to publish a web application to a Windows Azure Web Sites from Visual Studio.</p>
+
+<p><img src="images/save-link.png?raw=true" alt="Saving the publish profile file" title="Saving the publish profile" />
+</p>
+
+<p><em>Saving the publish profile file</em></p></li>
+</ol>
+
+<p><a name="ApxBTask2"></a></p>
+
+<h4 id="Task_2_-_Configuring_the_Database_Server">Task 2 - Configuring the Database Server</h4>
+
+<p>If your application makes use of SQL Server databases you will need to create a SQL Database server. If you want to deploy a simple application that does not use SQL Server you might skip this task.</p>
+
+<ol>
+<li><p>You will need a SQL Database server for storing the application database. You can view the SQL Database servers from your subscription in the Windows Azure Management portal at <strong>Sql Databases</strong> | <strong>Servers</strong> | <strong>Server's Dashboard</strong>. If you do not have a server created, you can create one using the <strong>Add</strong> button on the command bar. Take note of the <strong>server name and URL, administrator login name and password</strong>, as you will use them in the next tasks. Do not create the database yet, as it will be created in a later stage.</p>
+
+<p><img src="images/sql-database-server-dashboard.png?raw=true" alt="SQL Database Server Dashboard" title="SQL Database Server Dashboard" />
+</p>
+
+<p><em>SQL Database Server Dashboard</em></p></li>
+<li><p>In the next task you will test the database connection from Visual Studio, for that reason you need to include your local IP address in the server's list of <strong>Allowed IP Addresses</strong>. To do that, click <strong>Configure</strong>, select the IP address from <strong>Current Client IP Address</strong> and paste it on the <strong>Start IP Address</strong> and <strong>End IP Address</strong> text boxes and click the <img src="images/add-client-ip-address-ok-button.png?raw=true" alt="add-client-ip-address-ok-button" />
+ button.</p>
+
+<p><img src="images/add-client-ip-address.png?raw=true" alt="Adding Client IP Address" />
+</p>
+
+<p><em>Adding Client IP Address</em></p></li>
+<li><p>Once the <strong>Client IP Address</strong> is added to the allowed IP addresses list, click on <strong>Save</strong> to confirm the changes.</p>
+
+<p><img src="images/add-client-ip-address-confirm.png?raw=true" alt="Confirm Changes" />
+</p>
+
+<p><em>Confirm Changes</em></p></li>
+</ol>
+
+<p><a name="ApxBTask3"></a></p>
+
+<h4 id="Task_3_-_Publishing_an_ASPNET_MVC_4_Application_using_Web_Deploy">Task 3 - Publishing an ASP.NET MVC 4 Application using Web Deploy</h4>
+
+<ol>
+<li><p>Go back to the ASP.NET MVC 4 solution. In the <strong>Solution Explorer</strong>,  right-click the web site project and select <strong>Publish</strong>.</p>
+
+<p><img src="images/publishing-the-application.png?raw=true" alt="Publishing the Application" title="Publishing the Application" />
+</p>
+
+<p><em>Publishing the web site</em></p></li>
+<li><p>Import the publish profile you saved in the first task.</p>
+
+<p><img src="images/importing-the-publish-profile.png?raw=true" alt="Importing the publish profile" title="Importing the publish profile" />
+</p>
+
+<p><em>Importing publish profile</em></p></li>
+<li><p>Click <strong>Validate Connection</strong>. Once Validation is complete click <strong>Next</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> Validation is complete once you see a green checkmark appear next to the Validate Connection button.</p>
+</blockquote>
+<p><img src="images/validating-connection.png?raw=true" alt="Validating connection" title="Validating connection" />
+</p>
+
+<p><em>Validating connection</em></p></li>
+<li><p>In the <strong>Settings</strong> page, under the <strong>Databases</strong> section, click the button next to your database connection's textbox (i.e. <strong>DefaultConnection</strong>).</p>
+
+<p><img src="images/web-deploy-configuration.png?raw=true" alt="Web deploy configuration" title="Web deploy configuration" />
+</p>
+
+<p><em>Web deploy configuration</em></p></li>
+<li><p>Configure the database connection as follows:</p>
+
+<ul>
+<li>In the <strong>Server name</strong> type your SQL Database server URL using the <em>tcp:</em> prefix.</li>
+<li>In <strong>User name</strong> type your server administrator login name.</li>
+<li>In <strong>Password</strong> type your server administrator login password.</li>
+<li>Type a new database name.</li>
+</ul>
+
+<p><img src="images/configuring-destination-connection-string.png?raw=true" alt="Configuring destination connection string" title="Configuring destination connection string" />
+</p>
+
+<p><em>Configuring destination connection string</em></p></li>
+<li><p>Then click <strong>OK</strong>. When prompted to create the database click <strong>Yes</strong>.</p>
+
+<p><img src="images/creating-the-database.png?raw=true" alt="Creating the database" title="Creating the database string" />
+</p>
+
+<p><em>Creating the database</em></p></li>
+<li><p>The connection string you will use to connect to SQL Database in Windows Azure is shown within Default Connection textbox. Then click <strong>Next</strong>.</p>
+
+<p><img src="images/sql-database-connection-string.png?raw=true" alt="Connection string pointing to SQL Database" title="Connection string pointing to SQL Database" />
+</p>
+
+<p><em>Connection string pointing to SQL Database</em></p></li>
+<li><p>In the <strong>Preview</strong> page, click <strong>Publish</strong>.</p>
+
+<p><img src="images/publishing-the-web-application.png?raw=true" alt="Publishing the web application" title="Publishing the web application" />
+</p>
+
+<p><em>Publishing the web application</em></p></li>
+<li><p>Once the publishing process finishes, your default browser will open the published web site.</p></li>
+</ol>
+
+</span>
+		</div>
+	<br />
+	<p><a href="#top">top of page</a></p>
+</div> 
+<div class="clearBoth"></div>
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="microsoftLink">
+            <a href="http://www.microsoft.com/" title="Microsoft">
+                <img alt="Microsoft" src="images/ms-logo-footer.png" /></a>
+        </div>
+        <div class="leftSideLinks">
+			<a href="mailto:webcamps@microsoft.com?subject=Web Camps Training Kit">Contact Us</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href=".\" target="_blank">Browse Content</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			 &copy;&nbsp;2012 Microsoft
+		 </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,1488 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Web Camps Training Kit - Home</title>
+    <link rel="Stylesheet" type="text/css" media="all" href="styles/master.css" />
+</head>
+<body>
+    <div id="outerWrapper">
+        <div id="wrapper" class="landingPage getStartedPage">
+            <div id="whiteBkgdStrip">
+            </div>
+            <div class="header">
+                <div class="heading">
+					<div class="mainHomepageTitle"></div>
+					<div class="logo-image"></div>
+					<div class="header-landscape landscape-image"></div>
+				<!--	<div class="clear"></div>-->
+				</div>
+				<div class="nav-menu-header">
+					<div class="AspNet-Menu-Horizontal" id="ctl00_TopNavMenu">
+						<ul class="AspNet-Menu">
+							<li class="AspNet-Menu-Leaf AspNet-Menu-Selected">
+								<a id="leftMenu" class="AspNet-Menu-Link AspNet-Menu-Selected" href="#">Content</a>
+							</li>
+							<li class="AspNet-Menu-Leaf">
+								<a id="rightMenu" class="AspNet-Menu-Link" href="Source">Setup</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+            </div>		
+            <div class="contentWrapper">
+			<a name="top"></a>
+
+
+<div class="genericInnerWrapper">
+		<div class="content">
+			<?xml version="1.0" encoding="iso-8859-1"?><span><p><a name="HOLTop"></a></p>
+
+<h1 id="Whats_New_in_Web_Forms_in_ASPNET_45">What's New in Web Forms in ASP.NET 4.5</h1>
+
+<hr />
+
+<p><a name="Overview"></a></p>
+
+<h2 id="Overview">Overview</h2>
+
+<p>The new version of ASP.NET Web Forms introduces a number of improvements focused on improving user experience when working with data.</p>
+
+<p>In previous versions of Web Forms, when using data-binding to emit the value of an object member, you used the data-binding expressions Bind() or Eval(). In the new version of ASP.NET, you are able to declare what type of data a control is going to be bound to by using a new ItemType property. Setting this property will enable you to use a strongly-typed variable to receive the full benefits of the Visual Studio development experience, such as IntelliSense, member navigation, and compile-time checking.</p>
+
+<p>With the data-bound controls, you can now also specify your own custom methods for selecting, updating, deleting and inserting data, simplifying the interaction between the page controls and your application logic. Additionally, model binding capabilities have been added to ASP.NET, which means you can map data from the page directly into method type parameters.</p>
+
+<p>Validating user input should also be easier with the latest version of Web Forms. You can now annotate your model classes with validation attributes from the <strong>System.ComponentModel.DataAnnotations</strong> namespace and request that all your site controls validate user input using that information. Client-side validation in Web Forms is now integrated with jQuery, providing cleaner client-side code and unobtrusive JavaScript features.</p>
+
+<p>In the request validation area, improvements have been made to make it easier to selectively turn off request validation for specific parts of your applications or read invalidated request data.</p>
+
+<p>Some improvements have been made to Web Forms server controls to take advantage of new features of HTML5:</p>
+
+<ul>
+<li><p>The TextMode property of the TextBox control has been updated to support the new HTML5 input types like email, datetime, and so on.</p></li>
+<li><p>The FileUpload control now supports multiple file uploads from browsers that support this HTML5 feature.</p></li>
+<li><p>Validator controls now support validating HTML5 input elements.</p></li>
+<li><p>New HTML5 elements that have attributes that represent a URL now support runat=&quot;server&quot;. As a result, you can use ASP.NET conventions in URL paths, like the ~ operator to represent the application root (for example, <video runat="server" src="~/myVideo.wmv"></video>).</p></li>
+<li><p>The UpdatePanel control has been fixed to support posting HTML5 input fields.</p></li>
+</ul>
+
+<p>In the official ASP.NET portal you can find more examples of the new features in ASP.NET WebForms 4.5: <a href="http://www.asp.net/vnext/overview/whitepapers/whats-new#_Toc318097385">What's New in ASP.NET 4.5 and Visual Studio 2012</a></p>
+
+<h3 id="Objectives">Objectives</h3>
+
+<p>In this hands-on lab, you will learn how to:</p>
+
+<ul>
+<li><p>Use strongly-typed data-binding expressions</p></li>
+<li><p>Use new model binding features in Web Forms</p></li>
+<li><p>Use value providers for mapping page data to code-behind methods</p></li>
+<li><p>Use Data Annotations for user input validation</p></li>
+<li><p>Take advange of unobstrusive client-side validation with jQuery in Web Forms</p></li>
+<li><p>Implement granular request validation</p></li>
+<li><p>Implement asynchronous page processing in Web Forms</p></li>
+</ul>
+
+<p><a name="Prerequisites"></a></p>
+
+<h3 id="Prerequisites">Prerequisites</h3>
+
+<p>You must have the following items to complete this lab:</p>
+
+<ul>
+<li><a href="http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web">Microsoft Visual Studio Express 2012 for Web</a> or superior (read <a href="#AppendixA">Appendix A</a> for instructions on how to install it).</li>
+</ul>
+
+<p><a name="Setup"></a> </p>
+
+<h3 id="Setup">Setup</h3>
+
+<p><strong>Installing Code Snippets</strong></p>
+
+<p>For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets. To install the code snippets run <strong>.\Source\Setup\CodeSnippets.vsi</strong> file.</p>
+
+<p>If you are not familiar with the Visual Studio Code Snippets, and want to learn how to use them, you can refer to the appendix from this document &quot;<a href="#AppendixC">Appendix C: Using Code Snippets</a>&quot;.</p>
+
+<h2 id="Exercises">Exercises</h2>
+
+<p>This hands-on lab includes the following exercises:</p>
+
+<ol>
+<li><p><a href="#Exercise1">Exercise 1: Model Binding in ASP.NET Web Forms</a></p></li>
+<li><p><a href="#Exercise2">Exercise 2: Data Validation</a></p></li>
+<li><p><a href="#Exercise3">Exercise 3: Asynchronous Page Processing in ASP.NET Web Forms</a></p></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Each exercise is accompanied by an <strong>End</strong> folder containing the resulting solution you should obtain after completing the exercises. You can use this solution as a guide if you need additional help working through the exercises.</p>
+</blockquote>
+<p>Estimated time to complete this lab: <strong>60 minutes</strong>.</p>
+
+<p><a name="Exercise1"></a></p>
+
+<h3 id="Exercise_1_Model_Binding_in_ASPNET_Web_Forms">Exercise 1: Model Binding in ASP.NET Web Forms</h3>
+
+<p>The new version of ASP.NET Web Forms introduces a number of enhancements focused on improving the experience when working with data. Throughout this exercise, you will learn about strongly typed data-controls and model binding.</p>
+
+<h4 id="Task_1_-_Using_Strongly-Typed_Data-Bindings">Task 1 - Using Strongly-Typed Data-Bindings</h4>
+
+<p>In this task, you will discover the new strongly-typed bindings available in ASP.NET 4.5.</p>
+
+<ol>
+<li><p>Open the <strong>Begin</strong> solution located at <strong>Source/Ex1-ModelBinding/Begin/</strong> folder.</p>
+
+<ol>
+<li>You will need to download some missing NuGet packages before continue. To do this, click the <strong>Project</strong> menu and select <strong>Manage NuGet Packages</strong>.</li>
+<li>In the <strong>Manage NuGet Packages</strong> dialog, click <strong>Restore</strong> in order to download missing packages.</li>
+<li>Finally, build the solution by clicking <strong>Build</strong> | <strong>Build Solution</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.</p>
+</blockquote></li>
+<li><p>Open the <strong>Customers.aspx</strong> page. Place an unnumbered list in the main control and include a repeater control inside for listing each customer. Set the repeater name to <strong>customersRepeater</strong> as shown in the following code.</p>
+
+<p>In previous versions of Web Forms, when using data-binding to emit the value of a member on an object you're data-binding to, you would use a data-binding expression, along with a call to the Eval method, passing in the name of the member as a string.</p>
+
+<p>At runtime, these calls to Eval will use reflection against the currently bound object to read the value of the member with the given name, and display the result in the HTML. This approach makes it very easy to data-bind against arbitrary, unshaped data.</p>
+
+<p>Unfortunately, you lose many of the great development-time experience features in Visual Studio, including IntelliSense for member names, support for navigation (like Go To Definition), and compile-time checking.</p>
+
+<!-- mark:4-13    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML">...
+<span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Content</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Content3&quot;</span> <span style="color:#FF0000">ContentPlaceHolderID</span>=<span style="color:#0000FF">&quot;MainContent&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">h3</span><span style="color:#0000FF">&gt;</span>Customers<span style="color:#0000FF">&lt;/</span><span style="color:#800000">h3</span><span style="color:#0000FF">&gt;</span>
+<strong class="markLine">  <span style="color:#0000FF">&lt;</span><span style="color:#800000">ul</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Repeater</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;customersRepeater&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">      <span style="color:#0000FF">&lt;</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">            <span style="color:#0000FF">&lt;</span><span style="color:#800000">li</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">                <span style="background-color:#FFFF00; color:Black">&lt;%</span># Eval(&quot;FirstName&quot;) <span style="background-color:#FFFF00; color:Black">%&gt;</span></strong>
+<strong class="markLine">                <span style="background-color:#FFFF00; color:Black">&lt;%</span># Eval(&quot;LastName&quot;) <span style="background-color:#FFFF00; color:Black">%&gt;</span></strong>
+<strong class="markLine">            <span style="color:#0000FF">&lt;/</span><span style="color:#800000">li</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">      <span style="color:#0000FF">&lt;/</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">    <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Repeater</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">  <span style="color:#0000FF">&lt;/</span><span style="color:#800000">ul</span><span style="color:#0000FF">&gt;</span></strong>
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">a</span> <span style="color:#FF0000">href</span>=<span style="color:#0000FF">&quot;CustomerDetails.aspx&quot;</span><span style="color:#0000FF">&gt;</span>Add a New Customer<span style="color:#0000FF">&lt;/</span><span style="color:#800000">a</span><span style="color:#0000FF">&gt;</span>
+<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Content</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Open the <strong>Customers.aspx.cs</strong> file.</p></li>
+<li><p>Add the following using statement.</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">using</span> System.Linq;
+</code></pre></li>
+<li><p>In the <strong>Page_Load</strong> method, add code to populate the repeater with the list of customers. </p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex01 - Bind Customers Data Source</em>)</p>
+
+<!-- mark:3-7    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">protected</span> <span style="color:#0000FF">void</span> Page_Load(<span style="color:#0000FF">object</span> sender, EventArgs e)
+{
+<strong class="markLine">  <span style="color:#0000FF">using</span> (<span style="color:#0000FF">var</span> db = <span style="color:#0000FF">new</span> WebFormsLab.Model.ProductsContext())</strong>
+<strong class="markLine">  {</strong>
+<strong class="markLine">    <span style="color:#0000FF">this</span>.customersRepeater.DataSource = db.Customers.ToList();</strong>
+<strong class="markLine">    <span style="color:#0000FF">this</span>.customersRepeater.DataBind();</strong>
+<strong class="markLine">  }</strong>
+}
+</code></pre>
+
+<p>The solution uses EntityFramework together with CodeFirst to create and access the database. In the following code, the customersRepeater is bound to a materialized query that returns all the customers from the database.</p></li>
+<li><p>Press <strong>F5</strong> to run the solution and go to the <strong>Customers</strong> page to see the repeater in action. As the solution is using CodeFirst, the database will be created and populated in your local SQL Express instance when running the application.</p>
+
+<p><img src="./images/Listing-the-customers-with-a-repeater.png?raw=true" alt="Listing the customers with a repeater" title="Listing the customers with a repeater" />
+</p>
+
+<p><em>Listing the customers with a repeater</em></p>
+<blockquote>
+<p><strong>Note:</strong> In Visual Studio 2012, IIS Express is the default Web development server.</p>
+</blockquote></li>
+<li><p>Close the browser and go back to Visual Studio.</p></li>
+<li><p>Now replace the implementation to use strongly typed bindings. Open the <strong>Customers.aspx</strong> page and use the new <strong>ItemType</strong> attribute in the repeater to set the <strong>Customer</strong> type as the binding type.</p>
+
+<!-- mark:4    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Content</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Content2&quot;</span> <span style="color:#FF0000">ContentPlaceHolderID</span>=<span style="color:#0000FF">&quot;MainContent&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">ul</span><span style="color:#0000FF">&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Repeater</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;customersRepeater&quot;</span> 
+<strong class="markLine">                  <span style="color:#FF0000">ItemType</span>=<span style="color:#0000FF">&quot;WebFormsLab.Model.Customer&quot;</span> </strong>
+                  <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span><span style="color:#0000FF">&gt;</span>
+      <span style="color:#0000FF">&lt;</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span>
+         ...
+      <span style="color:#0000FF">&lt;/</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span>
+    <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Repeater</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;/</span><span style="color:#800000">ul</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">a</span> <span style="color:#FF0000">href</span>=<span style="color:#0000FF">&quot;CustomerDetails.aspx&quot;</span><span style="color:#0000FF">&gt;</span>Add a New Customer<span style="color:#0000FF">&lt;/</span><span style="color:#800000">a</span><span style="color:#0000FF">&gt;</span>
+<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Content</span><span style="color:#0000FF">&gt;</span>
+</code></pre>
+
+<p>The ItemType property enables you to declare which type of data the control is going to be bound to and allows you to use strongly-typed binding inside the data-bound control.</p></li>
+<li><p>Replace the ItemTemplate content with the following code.</p>
+
+<!-- mark:7-9    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Content</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Content2&quot;</span> <span style="color:#FF0000">ContentPlaceHolderID</span>=<span style="color:#0000FF">&quot;MainContent&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span><span style="color:#0000FF">&gt;</span>
+  ...
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">ul</span><span style="color:#0000FF">&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Repeater</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;customersRepeater&quot;</span> <span style="color:#FF0000">ItemType</span>=<span style="color:#0000FF">&quot;WebFormsLab.Model.Customer&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span><span style="color:#0000FF">&gt;</span>
+      <span style="color:#0000FF">&lt;</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span>
+        <span style="color:#0000FF">&lt;</span><span style="color:#800000">li</span><span style="color:#0000FF">&gt;</span>
+<strong class="markLine">          <span style="color:#0000FF">&lt;</span><span style="color:#800000">a</span> <span style="color:#FF0000">href</span>=<span style="color:#0000FF">&quot;CustomerDetails.aspx?id=&lt;%#: Item.Id %&gt;&quot;</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">            <span style="background-color:#FFFF00; color:Black">&lt;%</span>#: Item.FirstName <span style="background-color:#FFFF00; color:Black">%&gt;</span> <span style="background-color:#FFFF00; color:Black">&lt;%</span>#: Item.LastName <span style="background-color:#FFFF00; color:Black">%&gt;</span></strong>
+<strong class="markLine">          <span style="color:#0000FF">&lt;/</span><span style="color:#800000">a</span><span style="color:#0000FF">&gt;</span></strong>
+        <span style="color:#0000FF">&lt;/</span><span style="color:#800000">li</span><span style="color:#0000FF">&gt;</span>
+      <span style="color:#0000FF">&lt;/</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span>
+    <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Repeater</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;/</span><span style="color:#800000">ul</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">a</span> <span style="color:#FF0000">href</span>=<span style="color:#0000FF">&quot;CustomerDetails.aspx&quot;</span><span style="color:#0000FF">&gt;</span>Add a New Customer<span style="color:#0000FF">&lt;/</span><span style="color:#800000">a</span><span style="color:#0000FF">&gt;</span>
+<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Content</span><span style="color:#0000FF">&gt;</span>
+</code></pre>
+
+<p>One downside with the above approaches is that the calls to Eval() and Bind() are late-bound - meaning you pass strings to represent the property names. This means you don't get Intellisense for the member names, support for code navigation (like Go To Definition), nor compile-time checking support.</p>
+
+<p>Setting the ItemType property causes two new typed variables to be generated in the scope of the data-binding expressions: <strong>Item</strong> and <strong>BindItem</strong>. You can use these strongly typed variables in the data-binding expressions and get the full benefits of the Visual Studio development experience.</p>
+
+<p>The &quot;<strong>:</strong>&quot; used in the expression will automatically HTML-encode the output to avoid security issues (for example, cross-site scripting attacks). This notation was available since .NET 4 for response writing, but now is also available in data-binding expressions.</p>
+<blockquote>
+<p><strong>Note:</strong> The Item member works for one-way binding. If you want to perform two-way binding use the <strong>BindItem</strong> member.</p>
+</blockquote>
+<p><img src="./images/IntelliSense-support-in-strongly-typed-binding.png?raw=true" alt="IntelliSense support in strongly-typed binding" title="IntelliSense support in strongly-typed binding" />
+</p>
+
+<p><em>IntelliSense support in strongly-typed binding</em></p></li>
+<li><p>Press <strong>F5</strong> to run the solution and go to the Customers page to make sure the changes work as expected.</p>
+
+<p><img src="./images/Listing-customer-details.png?raw=true" alt="Listing customer details" title="Listing customer details" />
+</p>
+
+<p><em>Listing customer details</em></p></li>
+<li><p>Close the browser and go back to Visual Studio.</p></li>
+</ol>
+
+<h4 id="Task_2_-_Introducing_Model_Binding_in_Web_Forms">Task 2 - Introducing Model Binding in Web Forms</h4>
+
+<p>In previous versions of ASP.NET Web Forms, when you wanted to perform two-way data-binding, both retrieving and updating data, you needed to use a Data Source object. This could be an Object Data Source, a SQL Data Source, a LINQ Data Source and so on. However if your scenario required custom code for handling the data, you needed to use the Object Data Source and this brought some drawbacks. For example, you needed to avoid complex types and you needed to handle exceptions when executing validation logic.</p>
+
+<p>In the new version of ASP.NET Web Forms the data-bound controls support model binding. This means that you can specify select, update, insert and delete methods directly in the data-bound control to call logic from your code-behind file or from another class.</p>
+
+<p>To learn about this, you will use a GridView to list the product categories using the new <strong>SelectMethod</strong> attribute. This attribute enables you to specify a method for retrieving the GridView data.</p>
+
+<ol>
+<li><p>Open the <strong>Products.aspx</strong> page and include a <strong>GridView</strong>. Configure the GridView as shown below to use strongly-typed bindings and enable sorting and paging.</p>
+
+<!-- mark:2-13    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Content</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Content3&quot;</span> <span style="color:#FF0000">ContentPlaceHolderID</span>=<span style="color:#0000FF">&quot;MainContent&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span><span style="color:#0000FF">&gt;</span>
+<strong class="markLine"> <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;categoriesGrid&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span></strong>
+<strong class="markLine">    <span style="color:#FF0000">AutoGenerateColumns</span>=<span style="color:#0000FF">&quot;false&quot;</span></strong>
+<strong class="markLine">    <span style="color:#FF0000">ItemType</span>=<span style="color:#0000FF">&quot;WebFormsLab.Model.Category&quot;</span> <span style="color:#FF0000">DataKeyNames</span>=<span style="color:#0000FF">&quot;CategoryID&quot;</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">    <span style="color:#0000FF">&lt;</span><span style="color:#800000">Columns</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">      <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;CategoryId&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;ID&quot;</span> <span style="color:#FF0000">SortExpression</span>=<span style="color:#0000FF">&quot;CategoryId&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">      <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;CategoryName&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Name&quot;</span> <span style="color:#FF0000">SortExpression</span>=<span style="color:#0000FF">&quot;CategoryName&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">      <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">      <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TemplateField</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;# of Products&quot;</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">        <span style="color:#0000FF">&lt;</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span><span style="background-color:#FFFF00; color:Black">&lt;%</span>#: Item.Products.Count <span style="background-color:#FFFF00; color:Black">%&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">      <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TemplateField</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">    <span style="color:#0000FF">&lt;/</span><span style="color:#800000">Columns</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">  <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span><span style="color:#0000FF">&gt;</span></strong>
+<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Content</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Use the new <strong>SelectMethod</strong> attribute to configure the GridView to call a <strong>GetCategories</strong> method to select the data.</p>
+
+<!-- mark:4    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;categoriesGrid&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span>
+    <span style="color:#FF0000">AutoGenerateColumns</span>=<span style="color:#0000FF">&quot;false&quot;</span>
+    <span style="color:#FF0000">ItemType</span>=<span style="color:#0000FF">&quot;WebFormsLab.Model.Category&quot;</span> <span style="color:#FF0000">DataKeyNames</span>=<span style="color:#0000FF">&quot;CategoryId&quot;</span>
+<strong class="markLine">    <span style="color:#FF0000">SelectMethod</span>=<span style="color:#0000FF">&quot;GetCategories&quot;</span><span style="color:#0000FF">&gt;</span></strong>
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">Columns</span><span style="color:#0000FF">&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;CategoryId&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;ID&quot;</span> <span style="color:#FF0000">SortExpression</span>=<span style="color:#0000FF">&quot;CategoryId&quot;</span> <span style="color:#0000FF">/&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;CategoryName&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Name&quot;</span> <span style="color:#FF0000">SortExpression</span>=<span style="color:#0000FF">&quot;CategoryName&quot;</span> <span style="color:#0000FF">/&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#0000FF">/&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TemplateField</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;# of Products&quot;</span><span style="color:#0000FF">&gt;</span>
+      <span style="color:#0000FF">&lt;</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span><span style="background-color:#FFFF00; color:Black">&lt;%</span>#: Item.Products.Count <span style="background-color:#FFFF00; color:Black">%&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span>
+    <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TemplateField</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;/</span><span style="color:#800000">Columns</span><span style="color:#0000FF">&gt;</span>
+<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Open the <strong>Products.aspx.cs</strong> code-behind file and add the following using statements.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex01 - Namespaces</em>)</p>
+
+<!-- mark:1-5    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><strong class="markLine"><span style="color:#0000FF">using</span> System.Collections.Generic;</strong>
+<strong class="markLine"><span style="color:#0000FF">using</span> System.Data.Entity;</strong>
+<strong class="markLine"><span style="color:#0000FF">using</span> System.Data.Entity.Infrastructure;</strong>
+<strong class="markLine"><span style="color:#0000FF">using</span> System.Linq;</strong>
+<strong class="markLine"><span style="color:#0000FF">using</span> WebFormsLab.Model;</strong>
+</code></pre></li>
+<li><p>Add a private member in the <strong>Products</strong> class and assign a new instance of <strong>ProductsContext</strong>. This property will store the Entity Framework data context that enables you to connect to the database.</p>
+
+<!-- mark:3    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">public</span> <span style="color:#0000FF">partial</span> <span style="color:#0000FF">class</span> Products : System.Web.UI.Page
+{
+<strong class="markLine">  <span style="color:#0000FF">private</span> ProductsContext db = <span style="color:#0000FF">new</span> ProductsContext();</strong>
+  ...
+</code></pre></li>
+<li><p>Create a <strong>GetCategories</strong> method to retrieve the list of categories using LINQ. The query will include the <strong>Products</strong> property so the GridView can show the amount of products for each category. Notice that the method returns a raw IQueryable object that represent the query to be executed later on the page lifecycle.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex01 - GetCategories</em>)</p>
+
+<!-- mark:1-7    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><strong class="markLine"><span style="color:#0000FF">public</span> IQueryable&lt;Category&gt; GetCategories()</strong>
+<strong class="markLine">{</strong>
+<strong class="markLine">  <span style="color:#0000FF">var</span> query = <span style="color:#0000FF">this</span>.db.Categories</strong>
+<strong class="markLine">    .Include(c =&gt; c.Products);</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">  <span style="color:#0000FF">return</span> query;</strong>
+<strong class="markLine">}</strong>
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> In previous versions of ASP.NET Web Forms, enabling sorting and paging using your own repository logic within an Object Data Source context, required to write your own custom code and receive all the necessary parameters. Now, as the data-binding methods can return IQueryable and this represents a query still to be executed, ASP.NET can take care of modifying the query to add the proper sorting and paging parameters.</p>
+</blockquote></li>
+<li><p>Press <strong>F5</strong> to start debugging the site and go to the Products page. You should see that the GridView is populated with the categories returned by the GetCategories method.</p>
+
+<p><img src="./images/Populating-a-GridView-using-model-binding.png?raw=true" alt="Populating a GridView using model binding" title="Populating a GridView using model binding" />
+</p>
+
+<p><em>Populating a GridView using model binding</em></p></li>
+<li><p>Press <strong>SHIFT</strong>+<strong>F5</strong> Stop debugging.</p></li>
+</ol>
+
+<h4 id="Task_3_-_Value_Providers_in_Model_Binding">Task 3 - Value Providers in Model Binding</h4>
+
+<p>Model binding not only enables you to specify custom methods to work with your data directly in the data-bound control, but also allows you to map data from the page into parameters from these methods. On the method parameter, you can use value provider attributes to specify the value's data source. For example:</p>
+
+<ul>
+<li><p>Controls on the page</p></li>
+<li><p>Query string values</p></li>
+<li><p>View data</p></li>
+<li><p>Session state</p></li>
+<li><p>Cookies</p></li>
+<li><p>Posted form data</p></li>
+<li><p>View state</p></li>
+<li><p>Custom value providers are supported as well</p></li>
+</ul>
+
+<p>If you have used ASP.NET MVC 4, you will notice the model binding support is similar. Indeed, these features were taken from ASP.NET MVC and moved into the <strong>System.Web</strong> assembly to be able to use them on Web Forms as well.</p>
+
+<p>In this task, you will update the GridView to filter its results by the amount of products for each category, receiving the filter parameter with model binding.</p>
+
+<ol>
+<li><p>Go back to the <strong>Products.aspx</strong> page.</p></li>
+<li><p>At the top of the GridView, add a <strong>Label</strong> and a <strong>ComboBox</strong> to select the number of products for each category as shown below.</p>
+
+<!-- mark:1-11    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><strong class="markLine"><span style="color:#0000FF">&lt;</span><span style="color:#800000">h3</span><span style="color:#0000FF">&gt;</span>Categories<span style="color:#0000FF">&lt;/</span><span style="color:#800000">h3</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Label1&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;minProductsCount&quot;</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">     Show categories with at least this number of products:</strong>
+<strong class="markLine"><span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">DropDownList</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;minProductsCount&quot;</span> <span style="color:#FF0000">AutoPostBack</span>=<span style="color:#0000FF">&quot;true&quot;</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">  <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">ListItem</span> <span style="color:#FF0000">Value</span>=<span style="color:#0000FF">&quot;&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&quot;-&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">  <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">ListItem</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&quot;1&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">  <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">ListItem</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&quot;3&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">  <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">ListItem</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&quot;5&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine"><span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">DropDownList</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine"><span style="color:#0000FF">&lt;</span><span style="color:#800000">br</span><span style="color:#0000FF">/&gt;</span></strong>
+</code></pre></li>
+<li><p>Add an <strong>EmptyDataTemplate</strong> to the GridView to show a message when there are no categories with the selected number of products.</p>
+
+<!-- mark:13-15    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;categoriesGrid&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span>
+    <span style="color:#FF0000">AutoGenerateColumns</span>=<span style="color:#0000FF">&quot;false&quot;</span>
+    <span style="color:#FF0000">ItemType</span>=<span style="color:#0000FF">&quot;WebFormsLab.Model.Category&quot;</span> <span style="color:#FF0000">DataKeyNames</span>=<span style="color:#0000FF">&quot;CategoryId&quot;</span>
+    <span style="color:#FF0000">SelectMethod</span>=<span style="color:#0000FF">&quot;GetCategories&quot;</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">Columns</span><span style="color:#0000FF">&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;CategoryId&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;ID&quot;</span> <span style="color:#0000FF">/&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;CategoryName&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Name&quot;</span> <span style="color:#0000FF">/&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#0000FF">/&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TemplateField</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;# of Products&quot;</span><span style="color:#0000FF">&gt;</span>
+      <span style="color:#0000FF">&lt;</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span><span style="background-color:#FFFF00; color:Black">&lt;%</span>#: Item.Products.Count <span style="background-color:#FFFF00; color:Black">%&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span>
+    <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TemplateField</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;/</span><span style="color:#800000">Columns</span><span style="color:#0000FF">&gt;</span>
+<strong class="markLine">  <span style="color:#0000FF">&lt;</span><span style="color:#800000">EmptyDataTemplate</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">      No categories found with a product count of <span style="background-color:#FFFF00; color:Black">&lt;%</span>#: minProductsCount.SelectedValue <span style="background-color:#FFFF00; color:Black">%&gt;</span></strong>
+<strong class="markLine">  <span style="color:#0000FF">&lt;/</span><span style="color:#800000">EmptyDataTemplate</span><span style="color:#0000FF">&gt;</span></strong>
+<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Open the <strong>Products.aspx.cs</strong> code-behind and add the following using statement.</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">using</span> System.Web.ModelBinding;
+</code></pre></li>
+<li><p>Modify the <strong>GetCategories</strong> method to receive an integer <strong>minProductsCount</strong> argument and filter the returned results. To do this, replace the method with the following code.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex01 - GetCategories 2</em>)</p>
+
+<!-- mark:1-12    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><strong class="markLine"><span style="color:#0000FF">public</span> IQueryable&lt;Category&gt; GetCategories([Control]<span style="color:#0000FF">int</span>? minProductsCount)</strong>
+<strong class="markLine">{</strong>
+<strong class="markLine">  <span style="color:#0000FF">var</span> query = <span style="color:#0000FF">this</span>.db.Categories</strong>
+<strong class="markLine">    .Include(c =&gt; c.Products);</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">  <span style="color:#0000FF">if</span> (minProductsCount.HasValue)</strong>
+<strong class="markLine">  {</strong>
+<strong class="markLine">    query = query.Where(c =&gt; c.Products.Count &gt;= minProductsCount);</strong>
+<strong class="markLine">  }</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">  <span style="color:#0000FF">return</span> query;</strong>
+<strong class="markLine">}</strong>
+</code></pre>
+
+<p>The new <strong>[Control]</strong> attribute on the <strong>minProductsCount</strong> argument will let ASP.NET know its value must be populated using a control in the page. ASP.NET will look for any control matching the name of the argument (minProductsCount) and perform the necessary mapping and conversion to fill the parameter with the control value.</p>
+
+<p>Alternatively, the attribute provides an overloaded constructor that enables you to specify the control from where to get the value.</p>
+<blockquote>
+<p><strong>Note:</strong> One goal of the data-binding features is to reduce the amount of code that needs to be written for page interaction. Apart from the [Control] value provider, you can use other model-binding providers in your method parameters. Some of them are listed in the task introduction.</p>
+</blockquote></li>
+<li><p>Press <strong>F5</strong> to start debugging the site and go to the Products page. Select a number of products in the drop-down list and notice how the GridView is now updated.</p>
+
+<p><img src="./images/Filtering-the-GridView-with-a-drop-down-list-value.png?raw=true" alt="Filtering the GridView with a drop-down list value" title="Filtering the GridView with a drop-down list value" />
+</p>
+
+<p><em>Filtering the GridView with a drop-down list value</em></p></li>
+<li><p>Stop debugging.</p></li>
+</ol>
+
+<h4 id="Task_4_-_Using_Model_Binding_for_Filtering">Task 4 - Using Model Binding for Filtering</h4>
+
+<p>In this task, you will add a second, child GridView to show the products within the selected category.</p>
+
+<ol>
+<li><p>Open the <strong>Products.aspx</strong> page and update the categories GridView to auto-generate the Select button.</p>
+
+<!-- mark:5    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;categoriesGrid&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span>
+  <span style="color:#FF0000">AutoGenerateColumns</span>=<span style="color:#0000FF">&quot;false&quot;</span>
+  <span style="color:#FF0000">ItemType</span>=<span style="color:#0000FF">&quot;WebFormsLab.Model.Category&quot;</span> <span style="color:#FF0000">DataKeyNames</span>=<span style="color:#0000FF">&quot;CategoryId&quot;</span>
+  <span style="color:#FF0000">SelectMethod</span>=<span style="color:#0000FF">&quot;GetCategories&quot;</span>
+<strong class="markLine">  <span style="color:#FF0000">AutoGenerateSelectButton</span>=<span style="color:#0000FF">&quot;true&quot;</span><span style="color:#0000FF">&gt;</span></strong>
+</code></pre></li>
+<li><p>Add a second <strong>GridView</strong> named <strong>productsGrid</strong> at the bottom. Set the <strong>ItemType</strong> to <strong>WebFormsLab.Model.Product</strong>, the <strong>DataKeyNames</strong> to <strong>ProductId</strong> and the <strong>SelectMethod</strong> to <strong>GetProducts</strong>. Set <strong>AutoGenerateColumns</strong> to <strong>false</strong> and add the columns for ProductId, ProductName, Description and UnitPrice.</p>
+
+<!-- mark:1-17    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><strong class="markLine"><span style="color:#0000FF">&lt;</span><span style="color:#800000">h3</span><span style="color:#0000FF">&gt;</span>Products<span style="color:#0000FF">&lt;/</span><span style="color:#800000">h3</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;productsGrid&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> </strong>
+<strong class="markLine">    <span style="color:#FF0000">CellPadding</span>=<span style="color:#0000FF">&quot;4&quot;</span></strong>
+<strong class="markLine">    <span style="color:#FF0000">AutoGenerateColumns</span>=<span style="color:#0000FF">&quot;false&quot;</span></strong>
+<strong class="markLine">    <span style="color:#FF0000">ItemType</span>=<span style="color:#0000FF">&quot;WebFormsLab.Model.Product&quot;</span></strong>
+<strong class="markLine">    <span style="color:#FF0000">DataKeyNames</span>=<span style="color:#0000FF">&quot;ProductId&quot;</span></strong>
+<strong class="markLine">    <span style="color:#FF0000">SelectMethod</span>=<span style="color:#0000FF">&quot;GetProducts&quot;</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">    <span style="color:#0000FF">&lt;</span><span style="color:#800000">Columns</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">        <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;ProductId&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;ID&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">        <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;ProductName&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Name&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">        <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#FF0000">HtmlEncode</span>=<span style="color:#0000FF">&quot;false&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">        <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;UnitPrice&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Price&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">    <span style="color:#0000FF">&lt;/</span><span style="color:#800000">Columns</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">    <span style="color:#0000FF">&lt;</span><span style="color:#800000">EmptyDataTemplate</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">        Select a category above to see its products</strong>
+<strong class="markLine">    <span style="color:#0000FF">&lt;/</span><span style="color:#800000">EmptyDataTemplate</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine"><span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span><span style="color:#0000FF">&gt;</span></strong>
+</code></pre></li>
+<li><p>Open the <strong>Products.aspx.cs</strong> code-behind file. Implement the <strong>GetProducts</strong> method to receive the category ID from the category GridView and filter the products. Model binding will set the parameter value using the selected row in the <strong>categoriesGrid</strong>. Since the argument name and control name do not match, you should specify the name of the control in the Control value provider.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex01 - GetProducts</em>)</p>
+
+<!-- mark:1-4    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><strong class="markLine"><span style="color:#0000FF">public</span> IEnumerable&lt;Product&gt; GetProducts([Control(<span style="color:#8B0000">&quot;categoriesGrid&quot;</span>)]<span style="color:#0000FF">int</span>? categoryId)</strong>
+<strong class="markLine">{</strong>
+<strong class="markLine">  <span style="color:#0000FF">return</span> <span style="color:#0000FF">this</span>.db.Products.Where(p =&gt; p.CategoryId == categoryId);</strong>
+<strong class="markLine">}</strong>
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> This approach makes it easier to unit test these methods. On a unit test context, where Web Forms is not executing, the [Control] attribute will not perform any specific action.</p>
+</blockquote></li>
+<li><p>Open the <strong>Products.aspx</strong> page and locate the products GridView. Update the products GridView to show a link for editing the selected product.</p>
+
+<!-- mark:9-13    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#800000">h3</span><span style="color:#0000FF">&gt;</span>Products<span style="color:#0000FF">&lt;/</span><span style="color:#800000">h3</span><span style="color:#0000FF">&gt;</span>
+<span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;productsGrid&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> 
+  <span style="color:#FF0000">CellPadding</span>=<span style="color:#0000FF">&quot;4&quot;</span>
+  <span style="color:#FF0000">AutoGenerateColumns</span>=<span style="color:#0000FF">&quot;false&quot;</span>
+  <span style="color:#FF0000">ItemType</span>=<span style="color:#0000FF">&quot;WebFormsLab.Model.Product&quot;</span>
+  <span style="color:#FF0000">DataKeyNames</span>=<span style="color:#0000FF">&quot;ProductId&quot;</span>
+  <span style="color:#FF0000">SelectMethod</span>=<span style="color:#0000FF">&quot;GetProducts&quot;</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">Columns</span><span style="color:#0000FF">&gt;</span>
+<strong class="markLine">    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TemplateField</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">      <span style="color:#0000FF">&lt;</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">        <span style="color:#0000FF">&lt;</span><span style="color:#800000">a</span> <span style="color:#FF0000">href</span>=<span style="color:#0000FF">&quot;ProductDetails.aspx?productId=&lt;%#: Item.ProductId %&gt;&quot;</span><span style="color:#0000FF">&gt;</span>View<span style="color:#0000FF">&lt;/</span><span style="color:#800000">a</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">      <span style="color:#0000FF">&lt;/</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">    <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TemplateField</span><span style="color:#0000FF">&gt;</span></strong>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;ProductId&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;ID&quot;</span> <span style="color:#0000FF">/&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;ProductName&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Name&quot;</span> <span style="color:#0000FF">/&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#FF0000">HtmlEncode</span>=<span style="color:#0000FF">&quot;false&quot;</span> <span style="color:#0000FF">/&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">BoundField</span> <span style="color:#FF0000">DataField</span>=<span style="color:#0000FF">&quot;UnitPrice&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Price&quot;</span> <span style="color:#0000FF">/&gt;</span>
+  <span style="color:#0000FF">&lt;/</span><span style="color:#800000">Columns</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">EmptyDataTemplate</span><span style="color:#0000FF">&gt;</span>
+    Select a category above to see its products
+  <span style="color:#0000FF">&lt;/</span><span style="color:#800000">EmptyDataTemplate</span><span style="color:#0000FF">&gt;</span>
+<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Open the <strong>ProductDetails.aspx</strong> page code-behind and replace the <strong>SelectProduct</strong> method with the following code.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex01 - SelectProduct Method</em>)</p>
+
+<!-- mark:1-4    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><strong class="markLine"><span style="color:#0000FF">public</span> Product SelectProduct([QueryString]<span style="color:#0000FF">int</span>? productId)</strong>
+<strong class="markLine">{</strong>
+<strong class="markLine">  <span style="color:#0000FF">return</span> <span style="color:#0000FF">this</span>.db.Products.Find(productId);</strong>
+<strong class="markLine">}</strong>
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> Notice that the <strong>[QueryString]</strong> attribute is used to fill the method parameter from a productId parameter in the query string.</p>
+</blockquote></li>
+<li><p>Press <strong>F5</strong> to start debugging the site and go to the Products page. Select any category from the categories GridView and notice that the products GridView is updated.</p>
+
+<p><img src="./images/Showing-products-from-the-selected-category.png?raw=true" alt="Showing products from the selected category" title="Showing products from the selected category" />
+</p>
+
+<p><em>Showing products from the selected category</em></p></li>
+<li><p>Click the <strong>View</strong> link on a product to open the ProductDetails.aspx page.</p>
+
+<p>Notice that the page is retrieving the product with the SelectMethod using the productId parameter from the query string.</p>
+
+<p><img src="./images/Viewing-the-product-details.png?raw=true" alt="Viewing the product details" title="Viewing the product details" />
+</p>
+
+<p><em>Viewing the product details</em></p>
+<blockquote>
+<p><strong>Note:</strong> The ability to type an HTML description will be implemented in the next exercise.</p>
+</blockquote></li>
+</ol>
+
+<h4 id="Task_5_-_Using_Model_Binding_for_Update_Operations">Task 5 - Using Model Binding for Update Operations</h4>
+
+<p>In the previous task, you have used model binding mainly for selecting data, in this task you will learn how to use model binding in update operations.</p>
+
+<p>You will update the categories GridView to let the user update categories.</p>
+
+<ol>
+<li><p>Open the <strong>Products.aspx</strong> page and update the categories GridView to auto-generate the Edit button and use the new <strong>UpdateMethod</strong> attribute to specify an <strong>UpdateCategory</strong> method to update the selected item.</p>
+
+<!-- mark:6-7    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;categoriesGrid&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span>
+    <span style="color:#FF0000">AutoGenerateColumns</span>=<span style="color:#0000FF">&quot;false&quot;</span>
+    <span style="color:#FF0000">ItemType</span>=<span style="color:#0000FF">&quot;WebFormsLab.Model.Category&quot;</span> <span style="color:#FF0000">DataKeyNames</span>=<span style="color:#0000FF">&quot;CategoryId&quot;</span>
+    <span style="color:#FF0000">SelectMethod</span>=<span style="color:#0000FF">&quot;GetCategories&quot;</span>
+    <span style="color:#FF0000">AutoGenerateSelectButton</span>=<span style="color:#0000FF">&quot;true&quot;</span>
+<strong class="markLine">    <span style="color:#FF0000">AutoGenerateEditButton</span>=<span style="color:#0000FF">&quot;true&quot;</span></strong>
+<strong class="markLine">    <span style="color:#FF0000">UpdateMethod</span>=<span style="color:#0000FF">&quot;UpdateCategory&quot;</span><span style="color:#0000FF">&gt;</span></strong>
+</code></pre>
+
+<p>The DataKeyNames attribute in the GridView define which are the members that uniquely identify the model-bound object and therefore, which are the parameters the update method should at least receive.</p></li>
+<li><p>Open the <strong>Products.aspx.cs</strong> code-behind file and implement the <strong>UpdateCategory</strong> method. The method should receive the category ID to load the current category, populate the values from the GridView and then update the category.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex01 - UpdateCategory</em>)</p>
+
+<!-- mark:1-11    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><strong class="markLine"><span style="color:#0000FF">public</span> <span style="color:#0000FF">void</span> UpdateCategory(<span style="color:#0000FF">int</span> categoryId)</strong>
+<strong class="markLine">{</strong>
+<strong class="markLine">  <span style="color:#0000FF">var</span> category = <span style="color:#0000FF">this</span>.db.Categories.Find(categoryId);</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">  <span style="color:#0000FF">this</span>.TryUpdateModel(category);</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">  <span style="color:#0000FF">if</span> (<span style="color:#0000FF">this</span>.ModelState.IsValid)</strong>
+<strong class="markLine">  {</strong>
+<strong class="markLine">    <span style="color:#0000FF">this</span>.db.SaveChanges();</strong>
+<strong class="markLine">  }</strong>
+<strong class="markLine">}</strong>
+</code></pre>
+
+<p>The new <strong>TryUpdateModel</strong> method in the Page class is responsible of populating the model object using the values from the controls in the page. In this case, it will replace the updated values from the current GridView row being edited into the <strong>category</strong> object.</p>
+<blockquote>
+<p><strong>Note:</strong> The next exercise will explain the usage of the ModelState.IsValid for validating the data entered by the user when editing the object.</p>
+</blockquote></li>
+<li><p>Run the site and go to the Products page. Edit a category. Type a new name and then click <strong>Update</strong> to persist the changes.</p>
+
+<p><img src="./images/Editing-categories.png?raw=true" alt="Editing categories" title="Editing categories" />
+</p>
+
+<p><em>Editing categories</em></p></li>
+</ol>
+
+<p><a name="Exercise2"></a></p>
+
+<h3 id="Exercise_2_Data_Validation">Exercise 2: Data Validation</h3>
+
+<p>In this exercise, you will learn about the new data validation features in ASP.NET 4.5. You will check out the new unobtrusive validation features in Web Forms. You will use data annotations in the application model classes for user input validation, and finally, you will learn how to turn on or off request validation to individual controls in a page.</p>
+
+<h4 id="Task_1_-_Unobtrusive_Validation">Task 1 - Unobtrusive Validation</h4>
+
+<p>Forms with complex data including validators tend to generate too much JavaScript code in the page, which can represent about 60% of the code. With unobtrusive validation enabled, your HTML code will look cleaner and tidier.</p>
+
+<p>In this section, you will enable unobtrusive validation in ASP.NET to compare the HTML code generated by both configurations.</p>
+
+<ol>
+<li><p>Open <strong>Visual Studio 2012</strong> and open the <strong>Begin</strong> solution located in the <strong>Source\Ex2-Validation\Begin</strong> folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.</p>
+
+<ol>
+<li>If you opened the provided <strong>Begin</strong> solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the <strong>WebFormsLab</strong> project <strong>Manage NuGet Packages</strong>.</li>
+<li>In the <strong>Manage NuGet Packages</strong> dialog, click <strong>Restore</strong> in order to download missing packages.</li>
+<li>Finally, build the solution by clicking <strong>Build</strong> | <strong>Build Solution</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.</p>
+</blockquote></li>
+<li><p>Press <strong>F5</strong> to start the web application. Go to the Customers page and click the <strong>Add a New Customer</strong> link.</p></li>
+<li><p>Right-click on the browser page, and select <strong>View Source</strong> option to open the HTML code generated by the application.</p>
+
+<p><img src="./images/Showing-the-page-HTML-code.png?raw=true" alt="Showing the page HTML code" title="Showing the page HTML code" />
+</p>
+
+<p><em>Showing the page HTML code</em></p></li>
+<li><p>Scroll through the page source code and notice that ASP.NET has injected JavaScript code and data validators in the page to perform the validations and show the error list.</p>
+
+<p><img src="./images/Validation-JavaScript-code-in-CustomerDetails-page-.png?raw=true" alt="Validation JavaScript code in CustomerDetails page " title="Validation JavaScript code in CustomerDetails page " />
+</p>
+
+<p><em>Validation JavaScript code in CustomerDetails page</em></p></li>
+<li><p>Close the browser and go back to Visual Studio.</p></li>
+<li><p>Now you will enable unobtrusive validation. Open <strong>Web.Config</strong> and locate <strong>ValidationSettings:UnobtrusiveValidationMode</strong> key in the <strong>AppSettings</strong> section<strong>.</strong> Set the key value to <strong>WebForms</strong>.</p>
+
+<!-- mark:5    -->
+
+<span class="codelanguage">XML</span><pre><code class="XML"><span style="color:#0000FF">&lt;</span><span style="color:#800000">configuration</span><span style="color:#0000FF">&gt;</span>
+  ...
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">appSettings</span><span style="color:#0000FF">&gt;</span>
+    <span style="color:#0000FF">&lt;</span><span style="color:#800000">add</span> <span style="color:#FF0000">key</span>=<span style="color:#0000FF">&quot;aspnet:uselegacysynchronizationcontext&quot;</span> <span style="color:#FF0000">value</span>=<span style="color:#0000FF">&quot;false&quot;</span> <span style="color:#0000FF">/&gt;</span>
+<strong class="markLine">    <span style="color:#0000FF">&lt;</span><span style="color:#800000">add</span> <span style="color:#FF0000">key</span>=<span style="color:#0000FF">&quot;ValidationSettings:UnobtrusiveValidationMode&quot;</span> <span style="color:#FF0000">value</span>=<span style="color:#0000FF">&quot;WebForms&quot;</span><span style="color:#0000FF">/&gt;</span></strong>
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> You can also set this property in the &quot;<strong>Page_Load</strong>&quot; event in case you want to enable Unobtrusive Validation only for some pages.</p>
+</blockquote></li>
+<li><p>Open <strong>CustomerDetails.aspx</strong> and press <strong>F5</strong> to start the Web application. </p></li>
+<li><p>Press the F12 key to open the IE developer tools. Once the developer tools is open, select the script tab. Select <strong>CustomerDetails.aspx</strong> from the menu and take note that the scripts required to run jQuery on the page have been loaded into the browser from the local site.    </p>
+
+<p><img src="./images/Loading-the-jQuery-JavaScript-files-directly-from-the-local-IIS-server.png?raw=true" alt="Loading the jQuery JavaScript files directly from the local IIS server" title="Loading the jQuery JavaScript files directly from the local IIS server" />
+</p>
+
+<p><em>Loading the jQuery JavaScript files directly from the local IIS server</em></p></li>
+<li><p>Close the browser to return to Visual Studio. Open the <strong>Site.Master</strong> file again and locate the <strong>ScriptManager</strong>. Add the attribute <strong>EnableCdn</strong> property with the value <strong>True</strong>. This will force jQuery to be loaded from the online URL, not from the local site's URL. </p></li>
+<li><p>Open <strong>CustomerDetails.aspx</strong> in Visual Studio. Press the F5 key to run the site. Once Internet Explorer opens, press the F12 key to open the developer tools. Select the <strong>Script</strong> tab, and then take a look at the drop-down list. Note the jQuery JavaScript files are no longer being loaded from the local site, but rather from the online jQuery CDN.    </p>
+
+<p><img src="./images/Loading-the-jQuery-JavaScript-files-from-the-jQuery-CDN.png?raw=true" alt="Loading the jQuery JavaScript files from the CDN" title="Loading the jQuery JavaScript files from the CDN" />
+</p>
+
+<p><em>Loading the jQuery JavaScript files from the CDN</em></p></li>
+<li><p>Open the HTML page source code again using the View source option in the browser. Notice that by enabling the unobtrusive validation ASP.NET has replaced the injected JavaScript code with data- *attributes.   </p>
+
+<p><img src="./images/Unobtrusive-validation-code.png?raw=true" alt="Unobtrusive validation code" title="Unobtrusive validation code" />
+</p>
+
+<p><em>Unobtrusive validation code</em></p>
+<blockquote>
+<p><strong>Note:</strong> In this example, you saw how a validation summary with Data annotations was simplified to only a few HTML and JavaScript lines. Previously, without unobtrusive validation, the more validation controls you add, the bigger your JavaScript validation code will grow.</p>
+</blockquote></li>
+</ol>
+
+<h4 id="Task_2_-_Validating_the_Model_with_Data_Annotations">Task 2 - Validating the Model with Data Annotations</h4>
+
+<p>ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of having a validation control on each input, you can now define constraints in your model classes and use them across all your web application. In this section, you will learn how to use data annotations for validating a new/edit customer form.</p>
+
+<ol>
+<li><p>Open <strong>CustomerDetail.aspx</strong> page. Notice that the customer first name and second name in the <strong>EditItemTemplate</strong> and <strong>InsertItemTemplate</strong> sections are validated using a RequiredFieldValidator controls. Each validator is associated to a particular condition, so you need to include as many validators as conditions to check.</p></li>
+<li><p>Add data annotations to validate the Customer model class. Open <strong>Customer.cs</strong> class in the <strong>Model</strong> folder and <em>decorate</em> each property using data annotation attributes.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex02 - Data Annotations</em>)</p>
+
+<!-- mark:1-28    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><strong class="markLine"><span style="color:#0000FF">namespace</span> WebFormsLab.Model</strong>
+<strong class="markLine">{</strong>
+<strong class="markLine">  <span style="color:#0000FF">using</span> System.Collections.Generic;</strong>
+<strong class="markLine">  <span style="color:#0000FF">using</span> System.ComponentModel.DataAnnotations;</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">  <span style="color:#0000FF">public</span> <span style="color:#0000FF">class</span> Customer</strong>
+<strong class="markLine">  {</strong>
+<strong class="markLine">     [Key]</strong>
+<strong class="markLine">     <span style="color:#0000FF">public</span> <span style="color:#0000FF">int</span> Id { <span style="color:#0000FF">get</span>; <span style="color:#0000FF">set</span>; }</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">     [Required]</strong>
+<strong class="markLine">     <span style="color:#0000FF">public</span> <span style="color:#0000FF">string</span> FirstName { <span style="color:#0000FF">get</span>; <span style="color:#0000FF">set</span>; }</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">     [Required]</strong>
+<strong class="markLine">     <span style="color:#0000FF">public</span> <span style="color:#0000FF">string</span> LastName { <span style="color:#0000FF">get</span>; <span style="color:#0000FF">set</span>; }</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">     [Range(0, 130)]</strong>
+<strong class="markLine">     <span style="color:#0000FF">public</span> <span style="color:#0000FF">int</span> Age { <span style="color:#0000FF">get</span>; <span style="color:#0000FF">set</span>; }</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">     <span style="color:#0000FF">public</span> Address Address { <span style="color:#0000FF">get</span>; <span style="color:#0000FF">set</span>; }</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">     [Phone]</strong>
+<strong class="markLine">     <span style="color:#0000FF">public</span> <span style="color:#0000FF">string</span> DaytimePhone { <span style="color:#0000FF">get</span>; <span style="color:#0000FF">set</span>; }</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">     [EmailAddress, StringLength(256)]</strong>
+<strong class="markLine">     <span style="color:#0000FF">public</span> <span style="color:#0000FF">string</span> EmailAddress { <span style="color:#0000FF">get</span>; <span style="color:#0000FF">set</span>; }</strong>
+<strong class="markLine">  }</strong>
+<strong class="markLine">}</strong>
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> .NET Framework 4.5 has extended the existing data annotation collection. These are some of the data annotations you can use: [CreditCard], [Phone], [EmailAddress], [Range], [Compare], [Url], [FileExtensions], [Required], [Key], [RegularExpression].</p>
+
+<p>Some usage examples:</p>
+
+<p>[Key]: Specifies that an attribute is the unique identifier</p>
+
+<p>[Range(0.4, 0.5, ErrorMessage=&quot;{Write an error message}&quot;]: Double range</p>
+
+<p>[EmailAddress(ErrorMessage=&quot;Invalid Email&quot;), MaxLength(56)]: Two annotations in the same line.</p>
+
+<p>You can also define your own error messages within each attribute.</p>
+</blockquote></li>
+<li><p>Open <strong>CustomerDetails.aspx</strong> and remove all the RequiredFieldvalidators for the first and last name fields in the in EditItemTemplate and InsertItemTemplate sections of the FormView control.</p>
+
+<!-- strike:5,10,17,22    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#800000">EditItemTemplate</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;</span><span style="color:#800000">fieldset</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;firstName&quot;</span><span style="color:#0000FF">&gt;</span>First Name: <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TextBox</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;firstName&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%#: BindItem.FirstName %&gt;&#39;</span> <span style="color:#0000FF">/&gt;</span>
+<span class="strikeLine" style="text-decoration:line-through;">        &amp;nbsp;<span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">RequiredFieldValidator</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ControlToValidate</span>=<span style="color:#0000FF">&quot;firstName&quot;</span> <span style="color:#FF0000">ErrorMessage</span>=<span style="color:#0000FF">&quot;Please enter a value for First Name&quot;</span> <span style="color:#FF0000">ForeColor</span>=<span style="color:#0000FF">&quot;Red&quot;</span> <span style="color:#0000FF">/&gt;</span></span>
+    <span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;lastName&quot;</span><span style="color:#0000FF">&gt;</span>Last Name: <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TextBox</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;lastName&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%#: BindItem.LastName %&gt;&#39;</span> <span style="color:#0000FF">/&gt;</span>
+<span class="strikeLine" style="text-decoration:line-through;">          &amp;nbsp;<span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">RequiredFieldValidator</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ControlToValidate</span>=<span style="color:#0000FF">&quot;lastName&quot;</span> <span style="color:#FF0000">ErrorMessage</span>=<span style="color:#0000FF">&quot;Please enter a value for Last Name&quot;</span> <span style="color:#FF0000">ForeColor</span>=<span style="color:#0000FF">&quot;Red&quot;</span> <span style="color:#0000FF">/&gt;</span></span>
+    <span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+  ...
+<span style="color:#0000FF">&lt;</span><span style="color:#800000">InsertItemTemplate</span><span style="color:#0000FF">&gt;</span>        
+ <span style="color:#0000FF">&lt;</span><span style="color:#800000">fieldset</span><span style="color:#0000FF">&gt;</span>
+   <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;firstName&quot;</span><span style="color:#0000FF">&gt;</span>First Name: <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+   <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TextBox</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;firstName&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%#: BindItem.FirstName %&gt;&#39;</span> <span style="color:#0000FF">/&gt;</span>           
+<span class="strikeLine" style="text-decoration:line-through;">     &amp;nbsp;<span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">RequiredFieldValidator</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ControlToValidate</span>=<span style="color:#0000FF">&quot;firstName&quot;</span> <span style="color:#FF0000">ErrorMessage</span>=<span style="color:#0000FF">&quot;Please enter a value for First Name&quot;</span> <span style="color:#FF0000">ForeColor</span>=<span style="color:#0000FF">&quot;Red&quot;</span> <span style="color:#0000FF">/&gt;</span></span>
+    <span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+
+   <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;lastName&quot;</span><span style="color:#0000FF">&gt;</span>Last Name: <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>                
+    <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TextBox</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;lastName&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%#: BindItem.LastName %&gt;&#39;</span> <span style="color:#0000FF">/&gt;</span>
+<span class="strikeLine" style="text-decoration:line-through;">     &amp;nbsp;<span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">RequiredFieldValidator</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ControlToValidate</span>=<span style="color:#0000FF">&quot;lastName&quot;</span> <span style="color:#FF0000">ErrorMessage</span>=<span style="color:#0000FF">&quot;Please enter a value for Last Name&quot;</span> <span style="color:#FF0000">ForeColor</span>=<span style="color:#0000FF">&quot;Red&quot;</span> <span style="color:#0000FF">/&gt;</span></span>
+    <span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+  ...
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> One advantage of using data annotations is that validation logic is not duplicated in your application pages. You define it once in the model, and use it across all the application pages that manipulate data.</p>
+</blockquote></li>
+<li><p>Open <strong>CustomerDetails.aspx</strong> code-behind and locate the SaveCustomer method. This method is called when inserting a new customer and receives the Customer parameter from the FormView control values. When the mapping between the page controls and the parameter object occurrs, ASP.NET will execute the model validation against all the data annotation attributes and fill the ModelState dictionary with the errors encountered, if any.</p>
+
+<p>The ModelState.IsValid will only return true if all the fields on your model are valid after performing the validation.</p>
+
+<!-- mark:3    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">public</span> <span style="color:#0000FF">void</span> SaveCustomer(Customer customer) 
+{
+<strong class="markLine">  <span style="color:#0000FF">if</span> (<span style="color:#0000FF">this</span>.ModelState.IsValid)</strong>
+  { 
+    <span style="color:#0000FF">using</span> (<span style="color:#0000FF">var</span> db = <span style="color:#0000FF">new</span> ProductsContext())
+    {
+       ...
+</code></pre></li>
+<li><p>Add a <strong>ValidationSummary</strong> control at the end of the CustomerDetails page to show the list of model errors.</p>
+
+<!-- mark:5-6    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML">      <span style="color:#0000FF">&lt;/</span><span style="color:#800000">fieldset</span><span style="color:#0000FF">&gt;</span>
+    <span style="color:#0000FF">&lt;/</span><span style="color:#800000">InsertItemTemplate</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">FormView</span><span style="color:#0000FF">&gt;</span>
+
+<strong class="markLine">  <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">ValidationSummary</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ShowModelStateErrors</span>=<span style="color:#0000FF">&quot;true&quot;</span> </strong>
+<strong class="markLine">       <span style="color:#FF0000">ForeColor</span>=<span style="color:#0000FF">&quot;Red&quot;</span> <span style="color:#FF0000">HeaderText</span>=<span style="color:#0000FF">&quot;Please check the following errors:&quot;</span><span style="color:#0000FF">/&gt;</span></strong>
+<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Content</span><span style="color:#0000FF">&gt;</span>
+</code></pre>
+
+<p>The <strong>ShowModelStateErrors</strong> is a new property on the ValidationSummary control that when set to <strong>true</strong>, the control will show the errors from the ModelState dictionary. These errors come from the data annotations validation.</p></li>
+<li><p>Press <strong>F5</strong> to run the Web application. Complete the form with some erroneous values and click <strong>Save</strong> to execute validation. Notice the error summary at the bottom.</p>
+
+<p><img src="./images/Validation-with-Data-Annotations.png?raw=true" alt="Validation with Data Annotations" title="Validation with Data Annotations" />
+</p>
+
+<p><em>Validation with Data Annotations</em></p></li>
+</ol>
+
+<h4 id="Task_3_-_Handling_Custom_Database_Errors_with_ModelState">Task 3 - Handling Custom Database Errors with ModelState</h4>
+
+<p>In previous version of Web Forms, handling database errors such as a too long string or a unique key violation could involve throwing exceptions in your repository code and then handling the exceptions on your code-behind to display an error. A great amount of code is required to do something relatively simple.</p>
+
+<p>In Web Forms 4.5, the ModelState object can be used to display the errors on the page, either from your model or from the database, in a consistent manner.</p>
+
+<p>In this task, you will add code to properly handle database exceptions and show the appropriate message to the user using the ModelState object.</p>
+
+<ol>
+<li><p>While the application is still running, try to update the name of a category using a duplicated value.</p>
+
+<p><img src="./images/Updating-a-category-with-a-duplicated-name.png?raw=true" alt="Updating a category with a duplicated name" title="Updating a category with a duplicated name" />
+</p>
+
+<p><em>Updating a category with a duplicated name</em></p>
+
+<p>Notice that an exception is thrown due to the &quot;unique&quot; constraint of the <strong>CategoryName</strong> column.</p>
+
+<p><img src="./images/Exception-for-duplicated-category-names.png?raw=true" alt="Exception for duplicated category names" title="Exception for duplicated category names" />
+</p>
+
+<p><em>Exception for duplicated category names</em></p></li>
+<li><p>Stop debugging. In the <strong>Products.aspx.cs</strong> code-behind file, update the <strong>UpdateCategory</strong> method to handle the exceptions thrown by the db.SaveChanges() method call and add an error to the <strong>ModelState</strong> object.</p>
+
+<p>The new <strong>TryUpdateModel</strong> method updates the category object retrieved from the database using the form data provided by the user.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex02 - UpdateCategory Handle Errors</em>)</p>
+
+<!-- mark:9-18    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">public</span> <span style="color:#0000FF">void</span> UpdateCategory(<span style="color:#0000FF">int</span> categoryId)
+{
+  <span style="color:#0000FF">var</span> category = <span style="color:#0000FF">this</span>.db.Categories.Find(categoryId);
+
+  <span style="color:#0000FF">this</span>.TryUpdateModel(category);
+
+  <span style="color:#0000FF">if</span> (<span style="color:#0000FF">this</span>.ModelState.IsValid)
+  {
+<strong class="markLine">    <span style="color:#0000FF">try</span></strong>
+<strong class="markLine">    {</strong>
+<strong class="markLine">      <span style="color:#0000FF">this</span>.db.SaveChanges();</strong>
+<strong class="markLine">    }</strong>
+<strong class="markLine">    <span style="color:#0000FF">catch</span> (DbUpdateException)</strong>
+<strong class="markLine">    {</strong>
+<strong class="markLine">      <span style="color:#0000FF">var</span> message = <span style="color:#0000FF">string</span>.Format(<span style="color:#8B0000">&quot;A category with the name {0} already exists.&quot;</span>, category.CategoryName);</strong>
+<strong class="markLine">      <span style="color:#0000FF">this</span>.ModelState.AddModelError(<span style="color:#8B0000">&quot;CategoryName&quot;</span>, message);</strong>
+<strong class="markLine">    }</strong>
+<strong class="markLine">  }</strong>
+}
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> Ideally, you would have to identify the cause of the DbUpdateException and check if the root cause is the violation of a unique key constraint.</p>
+</blockquote></li>
+<li><p>Open <strong>Products.aspx</strong> and add a <strong>ValidationSummary</strong> control below the categories GridView to show the list of model errors.</p>
+
+<!-- mark:5    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">GridView</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;categoriesGrid&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span>
+  ...
+&lt;/<span style="color:#FF0000">asp</span>:<span style="color:#FF0000">GridView</span><span style="color:#0000FF">&gt;</span>
+
+<strong class="markLine"><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">ValidationSummary</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;ValidationSummary1&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ShowModelStateErrors</span>=<span style="color:#0000FF">&quot;true&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+
+<span style="color:#0000FF">&lt;</span><span style="color:#800000">h3</span><span style="color:#0000FF">&gt;</span>Products<span style="color:#0000FF">&lt;/</span><span style="color:#800000">h3</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Run the site and go to the Products page. Try to update the name of a category using an duplicated value.</p>
+
+<p>Notice that the exception was handled and the error message appears in the <strong>ValidationSummary</strong> control.</p>
+
+<p><img src="./images/Duplicated-category-error.png?raw=true" alt="Duplicated category error" title="Duplicated category error" />
+</p>
+
+<p><em>Duplicated category error</em></p></li>
+</ol>
+
+<h4 id="Task_4_-_Request_Validation_in_ASPNET_Web_Forms_45">Task 4 - Request Validation in ASP.NET Web Forms 4.5</h4>
+
+<p>The request validation feature in ASP.NET provides a certain level of default protection against cross-site scripting (XSS) attacks. In previous versions of ASP.NET, request validation was enabled by default and could only be disabled for an entire page. With the new version of ASP.NET Web Forms you can now disable the request validation for a single control, perform lazy request validation or access un-validated request data (be careful if you do so!).</p>
+
+<ol>
+<li><p>Press <strong>Ctrl+F5</strong> to start the site without debugging and go to the Products page. Select a category and then click the <strong>Edit</strong> link on any of the products.</p></li>
+<li><p>Type a description containing potentially dangerous content, for instance including HTML tags. Take notice of the exception thrown due to the request validation.</p>
+
+<p><img src="./images/Editing-a-product-with-potentially-dangerous-content.png?raw=true" alt="Editing a product with potentially dangerous content" title="Editing a product with potentially dangerous content" />
+</p>
+
+<p><em>Editing a product with potentially dangerous content</em></p>
+
+<p><img src="./images/Exception-thrown-due-to-request-validation.png?raw=true" alt="Exception thrown due to request validation" title="Exception thrown due to request validation" />
+</p>
+
+<p><em>Exception thrown due to request validation</em></p></li>
+<li><p>Close the page and, in Visual Studio, press <strong>SHIFT+F5</strong> to stop debugging.</p></li>
+<li><p>Open the <strong>ProductDetails.aspx</strong> page and locate the <strong>Description</strong> TextBox.</p></li>
+<li><p>Add the new <strong>ValidateRequestMode</strong> property to the TextBox and set its value to <strong>Disabled</strong>.</p>
+
+<p>The new <strong>ValidateRequestMode</strong> attribute allows you to disable the request validation granularly on each control. This is useful when you want to use an input that may receive HTML code, but want to keep the validation working for the rest of the page.</p>
+
+<!-- mark:4    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TextBox</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#FF0000">TextMode</span>=<span style="color:#0000FF">&quot;MultiLine&quot;</span> 
+            <span style="color:#FF0000">Cols</span>=<span style="color:#0000FF">&quot;60&quot;</span> <span style="color:#FF0000">Rows</span>=<span style="color:#0000FF">&quot;8&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%# BindItem.Description %&gt;&#39;</span> 
+<strong class="markLine">    <span style="color:#FF0000">ValidateRequestMode</span>=<span style="color:#0000FF">&quot;Disabled&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Press <strong>F5</strong> to run the web application. Open the edit product page again and complete a product description including HTML tags. Notice that you can now add HTML content to the description.</p>
+
+<p><img src="./images/Request-validation-disabled-for-the-product-description.png?raw=true" alt="Request validation disabled for the product description" title="Request validation disabled for the product description" />
+</p>
+
+<p><em>Request validation disabled for the product description</em></p>
+<blockquote>
+<p><strong>Note:</strong> In a production application, you should sanitize the HTML code entered by the user to make sure only safe HTML tags are entered (for example, there are no &lt;script&gt; tags). To do this, you can use <a href="http://wpl.codeplex.com/">Microsoft Web Protection Library</a>.</p>
+</blockquote></li>
+<li><p>Edit the product again. Type HTML code in the Name field and click <strong>Save</strong>. Notice that Request Validation is only disabled for the Description field and the rest of the fields re still validated against the potentially dangerous content.</p>
+
+<p><img src="./images/Request-validation-enabled-in-the-rest-of-the-fields.png?raw=true" alt="Request validation enabled in the rest of the fields" title="Request validation enabled in the rest of the fields" />
+</p>
+
+<p><em>Request validation enabled in the rest of the fields</em></p>
+
+<p>ASP.NET Web Forms 4.5 includes a new request validation mode to perform request validation lazily. With the request validation mode set to <strong>4.5</strong>, if a piece of code accesses <em>Request.Form[&quot;key&quot;]</em>, ASP.NET 4.5's request validation will only trigger request validation for that specific element in the form collection.</p>
+
+<p>Additionally, ASP.NET 4.5 now includes core encoding routines from the Microsoft Anti-XSS Library v4.0. The Anti-XSS encoding routines are implemented by the new <em>AntiXssEncoder</em> type found in the new <strong>System.Web.Security.AntiXss</strong> namespace. With the <strong>encoderType</strong> parameter configured to use <em>AntiXssEncoder</em>, all output encoding within ASP.NET automatically uses the new encoding routines.</p></li>
+<li><p>ASP.NET 4.5 request validation also supports un-validated access to request data. ASP.NET 4.5 adds a new collection property to the <strong>HttpRequest</strong> object called <strong>Unvalidated</strong>. When you navigate into <strong>HttpRequest.Unvalidated</strong> you have access to all of the common pieces of request data, including Forms, QueryStrings, Cookies, URLs, and so on.</p>
+
+<p><img src="./images/Request.Unvalidated-object.png?raw=true" alt="Request.Unvalidated object" title="Request.Unvalidated object" />
+</p>
+
+<p><em>Request.Unvalidated object</em></p>
+<blockquote>
+<p><strong>Note:</strong> <strong>Please use the HttpRequest.Unvalidated property with caution!</strong> Make sure you carefully perform custom validation on the raw request data to ensure that dangerous text is not round-tripped and rendered back to unsuspecting customers!</p>
+</blockquote></li>
+</ol>
+
+<p><a name="Exercise3"></a></p>
+
+<h3 id="Exercise_3_Asynchronous_Page_Processing_in_ASPNET_Web_Forms">Exercise 3: Asynchronous Page Processing in ASP.NET Web Forms</h3>
+
+<p>In this exercise, you will be introduced to the new asynchronous page processing features in ASP.NET Web Forms.</p>
+
+<h4 id="Task_1_-_Updating_the_Product_Details_Page_to_Upload_and_Show_Images">Task 1 - Updating the Product Details Page to Upload and Show Images</h4>
+
+<p>In this task, you will update the product details page to allow the user to specify an image URL for the product and display it in the read-only view. You will create a local copy of the specified image by downloading it synchronously. In the next task, you will update this implementation to make it work asynchronously.</p>
+
+<ol>
+<li><p>Open <strong>Visual Studio 2012</strong> and load the <strong>Begin</strong> solution located in <strong>Source\Ex3-Async\Begin</strong> from this lab's folder. Alternatively, you can continue working on your existing solution from the previous exercises.</p>
+
+<ol>
+<li>If you opened the provided <strong>Begin</strong> solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the <strong>WebFormsLab</strong> project and select <strong>Manage NuGet Packages</strong>.</li>
+<li>In the <strong>Manage NuGet Packages</strong> dialog, click <strong>Restore</strong> in order to download missing packages.</li>
+<li>Finally, build the solution by clicking <strong>Build</strong> | <strong>Build Solution</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.</p>
+</blockquote></li>
+<li><p>Open the <strong>ProductDetails.aspx</strong> page source and add a field in the FormView's ItemTemplate to show the product image.</p>
+
+<!-- mark:10-14    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">fieldset</span><span style="color:#0000FF">&gt;</span>
+          <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#800000">b</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Label2&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;itemProductName&quot;</span><span style="color:#0000FF">&gt;</span>Name:<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">b</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+          <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;itemProductName&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%#: Item.ProductName %&gt;&#39;</span> <span style="color:#0000FF">/&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+          <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#800000">b</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Label3&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;itemDescription&quot;</span><span style="color:#0000FF">&gt;</span>Description (HTML):<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">b</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+          <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;itemDescription&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%# Item.Description %&gt;&#39;</span> <span style="color:#0000FF">/&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+          <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#800000">b</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Label4&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;itemUnitPrice&quot;</span><span style="color:#0000FF">&gt;</span>Price:<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">b</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+          <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;itemUnitPrice&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%#: Item.UnitPrice %&gt;&#39;</span> <span style="color:#0000FF">/&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+
+<strong class="markLine">          <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#800000">b</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Label5&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;itemUnitPrice&quot;</span><span style="color:#0000FF">&gt;</span>Image:<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">b</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">          <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">                <span style="color:#0000FF">&lt;</span><span style="color:#800000">img</span> <span style="color:#FF0000">src</span>=<span style="color:#0000FF">&quot;&lt;%# string.IsNullOrEmpty(Item.ImagePath) ? &quot;</span>/<span style="color:#FF0000">Images</span>/<span style="color:#FF0000">noimage</span>.<span style="color:#FF0000">jpg</span>&quot; : </strong>
+<strong class="markLine">                <span style="color:#FF0000">Item</span>.<span style="color:#FF0000">ImagePath</span> %&gt;&quot; <span style="color:#FF0000">alt</span>=<span style="color:#0000FF">&quot;Image&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<strong class="markLine">          <span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span></strong>
+
+          <span style="color:#0000FF">&lt;</span><span style="color:#800000">br</span> <span style="color:#0000FF">/&gt;</span>
+          <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+                <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Button</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Button1&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">CommandName</span>=<span style="color:#0000FF">&quot;Edit&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&quot;Edit&quot;</span> <span style="color:#0000FF">/&gt;</span>&amp;nbsp;
+                <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">HyperLink</span> <span style="color:#FF0000">NavigateUrl</span>=<span style="color:#0000FF">&quot;~/Products.aspx&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&quot;Back&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#0000FF">/&gt;</span>
+          <span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;/</span><span style="color:#800000">fieldset</span><span style="color:#0000FF">&gt;</span>
+<span style="color:#0000FF">&lt;/</span><span style="color:#800000">ItemTemplate</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Add a field to specify the image URL in the FormView's EditTemplate.</p>
+
+<!-- mark:12-13    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#800000">fieldset</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Label2&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;ProductName&quot;</span><span style="color:#0000FF">&gt;</span>Name:<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TextBox</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;ProductName&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%#: BindItem.ProductName %&gt;&#39;</span> <span style="color:#0000FF">/&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Label3&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;Description&quot;</span><span style="color:#0000FF">&gt;</span>Description (HTML):<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+          <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TextBox</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Description&quot;</span> <span style="color:#FF0000">TextMode</span>=<span style="color:#0000FF">&quot;MultiLine&quot;</span> <span style="color:#FF0000">Cols</span>=<span style="color:#0000FF">&quot;60&quot;</span> <span style="color:#FF0000">Rows</span>=<span style="color:#0000FF">&quot;8&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%# BindItem.Description %&gt;&#39;</span>
+                <span style="color:#FF0000">ValidateRequestMode</span>=<span style="color:#0000FF">&quot;Disabled&quot;</span> <span style="color:#0000FF">/&gt;</span>
+     <span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Label4&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;UnitPrice&quot;</span><span style="color:#0000FF">&gt;</span>Price:<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TextBox</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;UnitPrice&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%#: BindItem.UnitPrice %&gt;&#39;</span> <span style="color:#0000FF">/&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+
+<strong class="markLine">     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;Label1&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">AssociatedControlID</span>=<span style="color:#0000FF">&quot;ImagePath&quot;</span><span style="color:#0000FF">&gt;</span>Image URL:<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span></strong>
+<strong class="markLine">     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">TextBox</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;ImagePath&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&#39;&lt;%#:  BindItem.ImagePath %&gt;&#39;</span> <span style="color:#0000FF">/&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span></strong>
+
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">br</span> <span style="color:#0000FF">/&gt;</span>
+     <span style="color:#0000FF">&lt;</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+          <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Button</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">CommandName</span>=<span style="color:#0000FF">&quot;Update&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&quot;Save&quot;</span> <span style="color:#0000FF">/&gt;</span>
+          <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Button</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#FF0000">CommandName</span>=<span style="color:#0000FF">&quot;Cancel&quot;</span> <span style="color:#FF0000">Text</span>=<span style="color:#0000FF">&quot;Cancel&quot;</span> <span style="color:#FF0000">CausesValidation</span>=<span style="color:#0000FF">&quot;false&quot;</span> <span style="color:#0000FF">/&gt;</span>
+     <span style="color:#0000FF">&lt;/</span><span style="color:#800000">p</span><span style="color:#0000FF">&gt;</span>
+<span style="color:#0000FF">&lt;/</span><span style="color:#800000">fieldset</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Open the <strong>ProductDetails.aspx.cs</strong> code-behind file and add the following namespace directives.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex03 - Namespaces</em>)</p>
+
+<!-- mark:1-3    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><strong class="markLine"><span style="color:#0000FF">using</span> System.IO;</strong>
+<strong class="markLine"><span style="color:#0000FF">using</span> System.Net;</strong>
+<strong class="markLine"><span style="color:#0000FF">using</span> System.Web;</strong>
+</code></pre></li>
+<li><p>Create an <strong>UpdateProductImage</strong> method to store remote images in the local <strong>Images</strong> folder and update the product entity with the new image location value.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex03 - UpdateProductImage</em>)</p>
+
+<!-- mark:1-17    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><strong class="markLine"><span style="color:#0000FF">private</span> <span style="color:#0000FF">void</span> UpdateProductImage(Product product)</strong>
+<strong class="markLine">{</strong>
+<strong class="markLine">  <span style="color:#0000FF">string</span> imageUrl = product.ImagePath;</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">  <span style="color:#0000FF">if</span> (!<span style="color:#0000FF">string</span>.IsNullOrEmpty(imageUrl) &amp;&amp; !VirtualPathUtility.IsAbsolute(imageUrl))</strong>
+<strong class="markLine">  {</strong>
+<strong class="markLine">    product.ImagePath = <span style="color:#0000FF">string</span>.Format(</strong>
+<strong class="markLine">                             <span style="color:#8B0000">&quot;/Images/{0}{1}&quot;</span>, </strong>
+<strong class="markLine">                             product.ProductId, </strong>
+<strong class="markLine">                             Path.GetExtension(imageUrl));</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">    <span style="color:#0000FF">using</span> (<span style="color:#0000FF">var</span> wc = <span style="color:#0000FF">new</span> WebClient())</strong>
+<strong class="markLine">    {</strong>
+<strong class="markLine">      wc.DownloadFile(imageUrl, Server.MapPath(product.ImagePath));</strong>
+<strong class="markLine">    }</strong>
+<strong class="markLine">  }</strong>
+<strong class="markLine">}</strong>
+</code></pre></li>
+<li><p>Update the <strong>UpdateProduct</strong> method to call the <strong>UpdateProductImage</strong> method.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex03 - UpdateProductImage Call</em>)</p>
+
+<!-- mark:7    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">public</span> <span style="color:#0000FF">void</span> UpdateProduct(<span style="color:#0000FF">int</span> productId)
+{
+    <span style="color:#0000FF">var</span> product = <span style="color:#0000FF">this</span>.db.Products.Find(productId);
+
+    <span style="color:#0000FF">this</span>.TryUpdateModel(product);
+
+<strong class="markLine">    <span style="color:#0000FF">this</span>.UpdateProductImage(product);</strong>
+
+    <span style="color:#0000FF">if</span> (<span style="color:#0000FF">this</span>.ModelState.IsValid)
+    {
+        <span style="color:#0000FF">this</span>.db.SaveChanges();
+    }
+}
+</code></pre></li>
+<li><p>Run the application and try to upload an image for a product. For example, you can use the following image URL from Office Clip Arts: <a href="http://officeimg.vo.msecnd.net/en-us/images/MB900437099.jpg"><a href="http://officeimg.vo.msecnd.net/en-us/images/MB900437099.jpg">http://officeimg.vo.msecnd.net/en-us/images/MB900437099.jpg</a></a></p>
+
+<p><img src="./images/Setting-an-image-for-a-product.png?raw=true" alt="Setting an image for a product" title="Setting an image for a product" />
+</p>
+
+<p><em>Setting an image for a product</em></p></li>
+</ol>
+
+<h4 id="Task_2_-_Adding_Asynchronous_Processing_to_the_Product_Details_Page">Task 2 - Adding Asynchronous Processing to the Product Details Page</h4>
+
+<p>In this task, you will update the product details page to make it work asynchronously. You will enhance a long running task - the image download process - by using ASP.NET 4.5 asynchronous page processing.</p>
+
+<p>Asynchronous methods in web applications can be used to optimize the way ASP.NET thread pools are used. In ASP.NET there are a limited number of threads in the thread pool for attending requests, thus, when all the threads are busy, ASP.NET starts to reject new requests, sends application error messages and makes your site unavailable.</p>
+
+<p>Time-consuming operations on your web site are great candidates for asynchronous programming because they occupy the assigned thread for a long time. This includes long running requests, pages with lots of different elements and pages that require offline operations, such querying a database or accessing an external web server. The advantage is that if you use asynchronous methods for these operations, while the page is processing, the thread is freed and returned to the thread pool and can be used to attend to a new page request. This means, the page will start processing in one thread from the thread pool and might complete processing in a different one, after the async processing completes.</p>
+
+<ol>
+<li><p>Open the <strong>ProductDetails.aspx</strong> page. Add the <strong>Async</strong> attribute in the <strong>Page</strong> element and set it to <strong>true</strong>. This attribute tells ASP.NET to implement the IHttpAsyncHandler interface.</p>
+
+<!-- mark:3    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="background-color:#FFFF00; color:Black">&lt;%</span>@ Page Title=&quot;&quot; Language=&quot;C#&quot; MasterPageFile=&quot;~/Site.Master&quot; AutoEventWireup=&quot;true&quot;
+    CodeBehind=&quot;ProductDetails.aspx.cs&quot; Inherits=&quot;WebFormsLab.ProductDetails&quot;
+<strong class="markLine">    Async=&quot;true&quot; <span style="background-color:#FFFF00; color:Black">%&gt;</span></strong>
+</code></pre></li>
+<li><p>Add a Label at the bottom of the page to show the details of the threads running the page.</p>
+
+<!-- mark:4    -->
+
+<span class="codelanguage">HTML</span><pre><code class="HTML">    <span style="color:#0000FF">&lt;</span><span style="color:#800000">EmptyDataTemplate</span><span style="color:#0000FF">&gt;</span>Product not found<span style="color:#0000FF">&lt;/</span><span style="color:#800000">EmptyDataTemplate</span><span style="color:#0000FF">&gt;</span>
+  <span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">FormView</span><span style="color:#0000FF">&gt;</span>
+
+<strong class="markLine">  <span style="color:#0000FF">&lt;</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Label</span> <span style="color:#FF0000">ID</span>=<span style="color:#0000FF">&quot;threadsMessageLabel&quot;</span> <span style="color:#FF0000">runat</span>=<span style="color:#0000FF">&quot;server&quot;</span> <span style="color:#0000FF">/&gt;</span></strong>
+<span style="color:#0000FF">&lt;/</span><span style="color:#C71585">asp</span>:<span style="color:#800000">Content</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Open up <strong>ProductDetails.aspx.cs</strong> and add the following namespace directives.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex03 - Namespaces 2</em>)</p>
+
+<!-- mark:1-2    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><strong class="markLine"><span style="color:#0000FF">using</span> System.Web.UI;</strong>
+<strong class="markLine"><span style="color:#0000FF">using</span> System.Threading;</strong>
+</code></pre></li>
+<li><p>Modify the <strong>UpdateProductImage</strong> method to download the image with an asynchronous task. You will replace the <strong>WebClient</strong> <strong>DownloadFile</strong> method with the <strong>DownloadFileTaskAsync</strong> method and include the <strong>await</strong> keyword.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex03 - UpdateProductImage Async</em>)</p>
+
+<!-- mark:11-18    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">private</span> <span style="color:#0000FF">void</span> UpdateProductImage(Product product)
+{
+  <span style="color:#0000FF">string</span> imageUrl = product.ImagePath;
+
+  <span style="color:#0000FF">if</span> (!<span style="color:#0000FF">string</span>.IsNullOrEmpty(imageUrl) &amp;&amp; !VirtualPathUtility.IsAbsolute(imageUrl))
+  {
+    product.ImagePath = <span style="color:#0000FF">string</span>.Format(
+         <span style="color:#8B0000">&quot;/Images/{0}{1}&quot;</span>, 
+         product.ProductId, 
+         Path.GetExtension(imageUrl));
+<strong class="markLine"></strong>
+<strong class="markLine">    <span style="color:#0000FF">this</span>.RegisterAsyncTask(<span style="color:#0000FF">new</span> PageAsyncTask(<span style="color:#0000FF">async</span> (t) =&gt;</strong>
+<strong class="markLine">    {</strong>
+<strong class="markLine">      <span style="color:#0000FF">using</span> (<span style="color:#0000FF">var</span> wc = <span style="color:#0000FF">new</span> WebClient())</strong>
+<strong class="markLine">      {</strong>
+<strong class="markLine">        <span style="color:#0000FF">await</span> wc.DownloadFileTaskAsync(imageUrl, <span style="color:#0000FF">this</span>.Server.MapPath(product.ImagePath));</strong>
+<strong class="markLine">      }</strong>
+<strong class="markLine">    }));</strong>
+  }
+}
+</code></pre>
+
+<p>The RegisterAsyncTask registers a new page asynchronous task to be executed in a different thread. It receives a lambda expression with the Task (t) to be executed. The <strong>await</strong> keyword in the <strong>DownloadFileTaskAsync</strong> method converts the remainder of the method into a callback that is invoked asynchronously after the <strong>DownloadFileTaskAsync</strong> method has completed. ASP.NET will resume the execution of the method by automatically maintaining all the HTTP request original values. The new asynchronous programming model in .NET 4.5 enables you to write asynchronous code that looks very much like synchronous code, and let the compiler handle the complications of callback functions or continuation code. <strong>Note:</strong> RegisterAsyncTask and PageAsyncTask were already available since .NET 2.0. The await keyword is new from the .NET 4.5 asynchronous programming model and can be used together with the new TaskAsync methods from the .NET WebClient object.</p></li>
+<li><p>Add code to display the threads on which the code started and finished executing. To do this, update the <strong>UpdateProductImage</strong> method with the following code.</p>
+
+<p>(Code Snippet - <em>Web Forms Lab - Ex03 - Show threads</em>)</p>
+
+<!-- mark:14-23    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">private</span> <span style="color:#0000FF">void</span> UpdateProductImage(Product product)
+{
+  <span style="color:#0000FF">string</span> imageUrl = product.ImagePath;
+
+  <span style="color:#0000FF">if</span> (!<span style="color:#0000FF">string</span>.IsNullOrEmpty(imageUrl) &amp;&amp; !VirtualPathUtility.IsAbsolute(imageUrl))
+  {
+    product.ImagePath = <span style="color:#0000FF">string</span>.Format(
+         <span style="color:#8B0000">&quot;/Images/{0}{1}&quot;</span>, 
+         product.ProductId, 
+         Path.GetExtension(imageUrl));
+
+    <span style="color:#0000FF">this</span>.RegisterAsyncTask(<span style="color:#0000FF">new</span> PageAsyncTask(<span style="color:#0000FF">async</span> (t) =&gt;
+    {
+<strong class="markLine">      <span style="color:#0000FF">var</span> startThread = Thread.CurrentThread.ManagedThreadId;</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">      <span style="color:#0000FF">using</span> (<span style="color:#0000FF">var</span> wc = <span style="color:#0000FF">new</span> WebClient())</strong>
+<strong class="markLine">      {</strong>
+<strong class="markLine">        <span style="color:#0000FF">await</span> wc.DownloadFileTaskAsync(imageUrl, <span style="color:#0000FF">this</span>.Server.MapPath(product.ImagePath));</strong>
+<strong class="markLine">      }</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">      <span style="color:#0000FF">var</span> endThread = Thread.CurrentThread.ManagedThreadId;</strong>
+<strong class="markLine"></strong>
+<strong class="markLine">      <span style="color:#0000FF">this</span>.threadsMessageLabel.Text = <span style="color:#0000FF">string</span>.Format(<span style="color:#8B0000">&quot;Started on thread: {0}&lt;br /&gt; Finished on thread: {1}&quot;</span>, startThread, endThread);</strong>
+    }));
+  }
+}
+</code></pre></li>
+<li><p>Open the web site's <strong>Web.config</strong> file. Add the following appSetting variable. </p>
+
+<!-- mark:1    -->
+
+<span class="codelanguage">XML</span><pre><code class="XML"><strong class="markLine"><span style="color:#0000FF">&lt;</span><span style="color:#800000">add</span> <span style="color:#FF0000">key</span>=<span style="color:#0000FF">&quot;aspnet:UseTaskFriendlySynchronizationContext&quot;</span> <span style="color:#FF0000">value</span>=<span style="color:#0000FF">&quot;true&quot;</span><span style="color:#0000FF">/&gt;</span></strong>
+</code></pre></li>
+<li><p>Press <strong>F5</strong> to run the application and upload an image for the product. Notice the threads ID where the code started and finished may be different. This is because asynchronous tasks run on a separate thread from ASP.NET thread pool. When the task completes, ASP.NET puts the task back in the queue and assigns any of the available threads.</p>
+
+<p><img src="./images/Downloading-an-image-asynchronously.png?raw=true" alt="Downloading an image asynchronously" title="Downloading an image asynchronously" />
+</p>
+
+<p><em>Downloading an image asynchronously</em></p></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Additionally, you can deploy this application to Windows Azure Web Sites following <a href="#AppendixB">Appendix B: Publishing an ASP.NET MVC 4 Application using Web Deploy</a>.</p>
+</blockquote>
+<hr />
+
+<h2 id="Summary">Summary</h2>
+
+<p>In this hands-on lab, the following concepts have been addressed and demonstrated:</p>
+
+<ul>
+<li><p>Use strongly-typed data-binding expressions</p></li>
+<li><p>Use new model binding features in Web Forms</p></li>
+<li><p>Use value providers for mapping page data to code-behind methods</p></li>
+<li><p>Use Data Annotations for user input validation</p></li>
+<li><p>Take advange of unobstrusive client-side validation with jQuery in Web Forms</p></li>
+<li><p>Implement granular request validation</p></li>
+<li><p>Implement asynchronous page processing in Web Forms</p></li>
+</ul>
+
+<p><a name="AppendixA"></a></p>
+
+<h2 id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web">Appendix A: Installing Visual Studio Express 2012 for Web</h2>
+
+<p>You can install <strong>Microsoft Visual Studio Express 2012 for Web</strong> or another &quot;Express&quot; version using the <strong><a href="http://www.microsoft.com/web/downloads/platform.aspx">Microsoft Web Platform Installer</a></strong>. The following instructions guide you through the steps required to install <em>Visual studio Express 2012 for Web</em> using <em>Microsoft Web Platform Installer</em>.</p>
+
+<ol>
+<li><p>Go to <a href="http://go.microsoft.com/?linkid=9810169"><a href="http://go.microsoft.com/?linkid=9810169">http://go.microsoft.com/?linkid=9810169</a></a>. Alternatively, if you already have installed Web Platform Installer, you can open it and search for the product &quot;<em>Visual Studio Express 2012 for Web with Windows Azure SDK</em>&quot;.</p></li>
+<li><p>Click on <strong>Install Now</strong>. If you do not have <strong>Web Platform Installer</strong> you will be redirected to download and install it first.</p></li>
+<li><p>Once <strong>Web Platform Installer</strong> is open, click <strong>Install</strong> to start the setup.</p>
+
+<p><img src="images/install-visual-studio-express.png?raw=true" alt="Install Visual Studio Express" title="Install Visual Studio Express" />
+</p>
+
+<p><em>Install Visual Studio Express</em></p></li>
+<li><p>Read all the products' licenses and terms and click <strong>I Accept</strong> to continue.</p>
+
+<p><img src="images/accepting-the-license-terms.png?raw=true" alt="Accepting the license terms" />
+</p>
+
+<p><em>Accepting the license terms</em></p></li>
+<li><p>Wait until the downloading and installation process completes.</p>
+
+<p><img src="images/installation-progress.png?raw=true" alt="Installation progress" />
+</p>
+
+<p><em>Installation progress</em></p></li>
+<li><p>When the installation completes, click <strong>Finish</strong>.</p>
+
+<p><img src="images/installation-completed.png?raw=true" alt="Installation completed" />
+</p>
+
+<p><em>Installation completed</em></p></li>
+<li><p>Click <strong>Exit</strong> to close Web Platform Installer.</p></li>
+<li><p>To open Visual Studio Express for Web, go to the <strong>Start</strong> screen and start writing &quot;<strong>VS Express</strong>&quot;, then click on the <strong>VS Express for Web</strong> tile.</p>
+
+<p><img src="images/vs-express-for-web-tile.png?raw=true" alt="VS Express for Web tile" />
+</p>
+
+<p><em>VS Express for Web tile</em></p></li>
+</ol>
+
+<p><a name="AppendixB"></a></p>
+
+<h2 id="Appendix_B_Publishing_an_ASPNET_MVC_4_Application_using_Web_Deploy">Appendix B: Publishing an ASP.NET MVC 4 Application using Web Deploy</h2>
+
+<p>This appendix will show you how to create a new web site from the Windows Azure Management Portal and publish the application you obtained by following the lab, taking advantage of the Web Deploy publishing feature provided by Windows Azure.</p>
+
+<p><a name="ApxBTask1"></a></p>
+
+<h4 id="Task_1_-_Creating_a_New_Web_Site_from_the_Windows_Azure_Portal">Task 1 - Creating a New Web Site from the Windows Azure Portal</h4>
+
+<ol>
+<li><p>Go to the <a href="https://manage.windowsazure.com/">Windows Azure Management Portal</a> and sign in using the Microsoft credentials associated with your subscription.</p>
+<blockquote>
+<p><strong>Note:</strong> With Windows Azure you can host 10 ASP.NET Web Sites for free and then scale as your traffic grows. You can sign up <a href="http://aka.ms/aspnet-hol-azure">here</a>.</p>
+</blockquote>
+<p><img src="images/login.png?raw=true" alt="Log on to Windows Azure portal" title="Log on to Windows Azure portal" />
+</p>
+
+<p><em>Log on to Windows Azure Management Portal</em></p></li>
+<li><p>Click <strong>New</strong> on the command bar.</p>
+
+<p><img src="images/new-website.png?raw=true" alt="Creating a new Web Site" title="Creating a new Web Site" />
+</p>
+
+<p><em>Creating a new Web Site</em></p></li>
+<li><p>Click <strong>Compute</strong> | <strong>Web Site</strong>. Then select <strong>Quick Create</strong> option. Provide an available URL for the new web site and click <strong>Create Web Site</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> A Windows Azure Web Site is the host for a web application running in the cloud that you can control and manage. The Quick Create option allows you to deploy a completed web application to the Windows Azure Web Site from outside the portal. It does not include steps for setting up a database.</p>
+</blockquote>
+<p><img src="images/quick-create.png?raw=true" alt="Creating a new Web Site using Quick Create" title="Creating a new Web Site using Quick Create" />
+</p>
+
+<p><em>Creating a new Web Site using Quick Create</em></p></li>
+<li><p>Wait until the new <strong>Web Site</strong> is created.</p></li>
+<li><p>Once the Web Site is created click the link under the <strong>URL</strong> column. Check that the new Web Site is working.</p>
+
+<p><img src="images/navigate-website.png?raw=true" alt="Browsing to the new web site" title="Browsing to the new web site" />
+</p>
+
+<p><em>Browsing to the new web site</em></p>
+
+<p><img src="images/website-working.png?raw=true" alt="Web site running" title="Web site running" />
+</p>
+
+<p><em>Web site running</em></p></li>
+<li><p>Go back to the portal and click the name of the web site under the <strong>Name</strong> column to display the management pages.</p>
+
+<p><img src="images/go-to-the-dashboard.png?raw=true" alt="Opening the web site management pages" title="Opening the web site management pages" />
+</p>
+
+<p><em>Opening the Web Site management pages</em></p></li>
+<li><p>In the <strong>Dashboard</strong> page, under the <strong>quick glance</strong> section, click the <strong>Download publish profile</strong> link.</p>
+<blockquote>
+<p><strong>Note:</strong> The <em>publish profile</em> contains all of the information required to publish a web application to a Windows Azure website for each enabled publication method. The publish profile contains the URLs, user credentials and database strings required to connect to and authenticate against each of the endpoints for which a publication method is enabled. <strong>Microsoft WebMatrix 2</strong>, <strong>Microsoft Visual Studio Express for Web</strong> and <strong>Microsoft Visual Studio 2012</strong> support reading publish profiles to automate configuration of these programs for publishing web applications to Windows Azure websites. </p>
+</blockquote>
+<p><img src="images/download-publish-profile.png?raw=true" alt="Downloading the web site publish profile" title="Downloading the web site publish profile" />
+</p>
+
+<p><em>Downloading the Web Site publish profile</em></p></li>
+<li><p>Download the publish profile file to a known location. Further in this exercise you will see how to use this file to publish a web application to a Windows Azure Web Sites from Visual Studio.</p>
+
+<p><img src="images/save-link.png?raw=true" alt="Saving the publish profile file" title="Saving the publish profile" />
+</p>
+
+<p><em>Saving the publish profile file</em></p></li>
+</ol>
+
+<p><a name="ApxBTask2"></a></p>
+
+<h4 id="Task_2_-_Configuring_the_Database_Server">Task 2 - Configuring the Database Server</h4>
+
+<p>If your application makes use of SQL Server databases you will need to create a SQL Database server. If you want to deploy a simple application that does not use SQL Server you might skip this task.</p>
+
+<ol>
+<li><p>You will need a SQL Database server for storing the application database. You can view the SQL Database servers from your subscription in the Windows Azure Management portal at <strong>Sql Databases</strong> | <strong>Servers</strong> | <strong>Server's Dashboard</strong>. If you do not have a server created, you can create one using the <strong>Add</strong> button on the command bar. Take note of the <strong>server name and URL, administrator login name and password</strong>, as you will use them in the next tasks. Do not create the database yet, as it will be created in a later stage.</p>
+
+<p><img src="images/sql-database-server-dashboard.png?raw=true" alt="SQL Database Server Dashboard" title="SQL Database Server Dashboard" />
+</p>
+
+<p><em>SQL Database Server Dashboard</em></p></li>
+<li><p>In the next task you will test the database connection from Visual Studio, for that reason you need to include your local IP address in the server's list of <strong>Allowed IP Addresses</strong>. To do that, click <strong>Configure</strong>, select the IP address from <strong>Current Client IP Address</strong> and paste it on the <strong>Start IP Address</strong> and <strong>End IP Address</strong> text boxes and click the <img src="images/add-client-ip-address-ok-button.png?raw=true" alt="add-client-ip-address-ok-button" />
+ button.</p>
+
+<p><img src="images/add-client-ip-address.png?raw=true" alt="Adding Client IP Address" />
+</p>
+
+<p><em>Adding Client IP Address</em></p></li>
+<li><p>Once the <strong>Client IP Address</strong> is added to the allowed IP addresses list, click on <strong>Save</strong> to confirm the changes.</p>
+
+<p><img src="images/add-client-ip-address-confirm.png?raw=true" alt="Confirm Changes" />
+</p>
+
+<p><em>Confirm Changes</em></p></li>
+</ol>
+
+<p><a name="ApxBTask3"></a></p>
+
+<h4 id="Task_3_-_Publishing_an_ASPNET_MVC_4_Application_using_Web_Deploy">Task 3 - Publishing an ASP.NET MVC 4 Application using Web Deploy</h4>
+
+<ol>
+<li><p>Go back to the ASP.NET MVC 4 solution. In the <strong>Solution Explorer</strong>,  right-click the web site project and select <strong>Publish</strong>.</p>
+
+<p><img src="images/publishing-the-application.png?raw=true" alt="Publishing the Application" title="Publishing the Application" />
+</p>
+
+<p><em>Publishing the web site</em></p></li>
+<li><p>Import the publish profile you saved in the first task.</p>
+
+<p><img src="images/importing-the-publish-profile.png?raw=true" alt="Importing the publish profile" title="Importing the publish profile" />
+</p>
+
+<p><em>Importing publish profile</em></p></li>
+<li><p>Click <strong>Validate Connection</strong>. Once Validation is complete click <strong>Next</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> Validation is complete once you see a green checkmark appear next to the Validate Connection button.</p>
+</blockquote>
+<p><img src="images/validating-connection.png?raw=true" alt="Validating connection" title="Validating connection" />
+</p>
+
+<p><em>Validating connection</em></p></li>
+<li><p>In the <strong>Settings</strong> page, under the <strong>Databases</strong> section, click the button next to your database connection's textbox (i.e. <strong>DefaultConnection</strong>).</p>
+
+<p><img src="images/web-deploy-configuration.png?raw=true" alt="Web deploy configuration" title="Web deploy configuration" />
+</p>
+
+<p><em>Web deploy configuration</em></p></li>
+<li><p>Configure the database connection as follows:</p>
+
+<ul>
+<li>In the <strong>Server name</strong> type your SQL Database server URL using the <em>tcp:</em> prefix.</li>
+<li>In <strong>User name</strong> type your server administrator login name.</li>
+<li>In <strong>Password</strong> type your server administrator login password.</li>
+<li>Type a new database name.</li>
+</ul>
+
+<p><img src="images/configuring-destination-connection-string.png?raw=true" alt="Configuring destination connection string" title="Configuring destination connection string" />
+</p>
+
+<p><em>Configuring destination connection string</em></p></li>
+<li><p>Then click <strong>OK</strong>. When prompted to create the database click <strong>Yes</strong>.</p>
+
+<p><img src="images/creating-the-database.png?raw=true" alt="Creating the database" title="Creating the database string" />
+</p>
+
+<p><em>Creating the database</em></p></li>
+<li><p>The connection string you will use to connect to SQL Database in Windows Azure is shown within Default Connection textbox. Then click <strong>Next</strong>.</p>
+
+<p><img src="images/sql-database-connection-string.png?raw=true" alt="Connection string pointing to SQL Database" title="Connection string pointing to SQL Database" />
+</p>
+
+<p><em>Connection string pointing to SQL Database</em></p></li>
+<li><p>In the <strong>Preview</strong> page, click <strong>Publish</strong>.</p>
+
+<p><img src="images/publishing-the-web-application.png?raw=true" alt="Publishing the web application" title="Publishing the web application" />
+</p>
+
+<p><em>Publishing the web application</em></p></li>
+<li><p>Once the publishing process finishes, your default browser will open the published web site.</p></li>
+</ol>
+
+<p><a name="AppendixC"></a></p>
+
+<h2 id="Appendix_C_Using_Code_Snippets">Appendix C: Using Code Snippets</h2>
+
+<p>With code snippets, you have all the code you need at your fingertips. The lab document will tell you exactly when you can use them, as shown in the following figure.</p>
+
+<p><img src="./images/Using-Visual-Studio-code-snippets-to-insert-code-into-your-project.png?raw=true" alt="Using Visual Studio code snippets to insert code into your project" title="Using Visual Studio code snippets to insert code into your project" />
+</p>
+
+<p><em>Using Visual Studio code snippets to insert code into your project</em></p>
+
+<p><em><strong>To add a code snippet using the keyboard (C# only)</strong></em></p>
+
+<ol>
+<li><p>Place the cursor where you would like to insert the code.</p></li>
+<li><p>Start typing the snippet name (without spaces or hyphens).</p></li>
+<li><p>Watch as IntelliSense displays matching snippets' names.</p></li>
+<li><p>Select the correct snippet (or keep typing until the entire snippet's name is selected).</p></li>
+<li><p>Press the Tab key twice to insert the snippet at the cursor location.</p></li>
+</ol>
+
+<p><img src="./images/Start-typing-the-snippet-name.png?raw=true" alt="Start typing the snippet name" title="Start typing the snippet name" />
+</p>
+
+<p><em>Start typing the snippet name</em></p>
+
+<p><img src="./images/Press-Tab-to-select-the-highlighted-snippet.png?raw=true" alt="Press Tab to select the highlighted snippet" title="Press Tab to select the highlighted snippet" />
+</p>
+
+<p><em>Press Tab to select the highlighted snippet</em></p>
+
+<p><img src="./images/Press-Tab-again-and-the-snippet-will-expand.png?raw=true" alt="Press Tab again and the snippet will expand" title="Press Tab again and the snippet will expand" />
+</p>
+
+<p><em>Press Tab again and the snippet will expand</em></p>
+
+<p><em><strong>To add a code snippet using the mouse (C#, Visual Basic and XML)</strong></em>
+1. Right-click where you want to insert the code snippet.</p>
+
+<ol>
+<li><p>Select <strong>Insert Snippet</strong> followed by <strong>My Code Snippets</strong>.</p></li>
+<li><p>Pick the relevant snippet from the list, by clicking on it.</p></li>
+</ol>
+
+<p><img src="./images/Right-click-where-you-want-to-insert-the-code-snippet-and-select-Insert-Snippet.png?raw=true" alt="Right-click where you want to insert the code snippet and select Insert Snippet" title="Right-click where you want to insert the code snippet and select Insert Snippet" />
+</p>
+
+<p><em>Right-click where you want to insert the code snippet and select Insert Snippet</em></p>
+
+<p><img src="./images/Pick-the-relevant-snippet-from-the-list,-by-clicking-on-it.png?raw=true" alt="Pick the relevant snippet from the list, by clicking on it" title="Pick the relevant snippet from the list, by clicking on it" />
+</p>
+
+<p><em>Pick the relevant snippet from the list, by clicking on it</em></p>
+
+</span>
+		</div>
+	<br />
+	<p><a href="#top">top of page</a></p>
+</div> 
+<div class="clearBoth"></div>
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="microsoftLink">
+            <a href="http://www.microsoft.com/" title="Microsoft">
+                <img alt="Microsoft" src="images/ms-logo-footer.png" /></a>
+        </div>
+        <div class="leftSideLinks">
+			<a href="mailto:webcamps@microsoft.com?subject=Web Camps Training Kit">Contact Us</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href=".\" target="_blank">Browse Content</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			 &copy;&nbsp;2012 Microsoft
+		 </div>
+    </div>
+</body>
+</html>
+

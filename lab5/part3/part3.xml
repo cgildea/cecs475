@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<books
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="part3.xsd">
+  <book>
+    <author auid ="123">
+      <name>
+        <fname>Abbey</fname>
+        <lname>Deitel</lname>
+      </name>
+      <contact>
+        <email>aaa@bbb.com</email>
+        <phone>562-1119999</phone>
+      </contact>
+    </author>
+    <bookinfo>
+      <title>C++ Programming</title>
+      <edition>1st Edition</edition>
+      <isbn>123456</isbn>
+      <price>50.90</price>
+    </bookinfo>
+  </book>
+  <book>
+    <author auid ="623">
+      <name>
+        <fname>John</fname>
+        <lname>Nguyen</lname>
+      </name>
+      <contact>
+        <email>eee@bbb.com</email>
+        <phone>562-2229999</phone>
+      </contact>
+    </author>
+    <bookinfo>
+      <title>Java Programming</title>
+      <edition>3th Edition</edition>
+      <isbn>563456</isbn>
+      <price>80.00</price>
+    </bookinfo>
+  </book>
+</books>

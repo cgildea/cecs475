@@ -1,0 +1,170 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Web Camps Training Kit - Home</title>
+    <link rel="Stylesheet" type="text/css" media="all" href="styles/master.css" />
+</head>
+<body>
+    <div id="outerWrapper">
+        <div id="wrapper" class="landingPage getStartedPage">
+            <div id="whiteBkgdStrip">
+            </div>
+            <div class="header">
+                <div class="heading">
+					<div class="mainHomepageTitle"></div>
+					<div class="logo-image"></div>
+					<div class="header-landscape landscape-image"></div>
+				<!--	<div class="clear"></div>-->
+				</div>
+				<div class="nav-menu-header">
+					<div class="AspNet-Menu-Horizontal" id="ctl00_TopNavMenu">
+						<ul class="AspNet-Menu">
+							<li class="AspNet-Menu-Leaf AspNet-Menu-Selected">
+								<a id="leftMenu" class="AspNet-Menu-Link AspNet-Menu-Selected" href="#">Content</a>
+							</li>
+							<li class="AspNet-Menu-Leaf">
+								<a id="rightMenu" class="AspNet-Menu-Link" href="Source">Setup</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+            </div>		
+            <div class="contentWrapper">
+			<a name="top"></a>
+
+
+<div class="genericInnerWrapper">
+		<div class="content">
+			<?xml version="1.0" encoding="iso-8859-1"?><span><h1 id="DEMO-RealtimeCommunicationsWithSignalR">DEMO-RealtimeCommunicationsWithSignalR</h1>
+
+<p><a name="outline"></a></p>
+
+<h2 id="Outline">Outline</h2>
+
+<p>This demo shows how to use SignalR to build a highly interactive web application, and how to use Service Bus backplane to scale SignalR hub to multiple service instances. The demo starts with a single page web application that allows a user to play virtual firworks. Then we'll extend the applications so that all users can share the same canvas and play fireworks together over the Internet.</p>
+<blockquote>
+<p><strong>Note:</strong> Under code folder there are folders for complete code of each phase. <strong>Firework</strong> is the starting project. <strong>Firework-SignalR</strong> is after SignalR is enabled. And <strong>Firework-End</strong> is the final project with Service Bus backplane.</p>
+</blockquote>
+<p><a name="demo-preparation"></a></p>
+
+<h2 id="Demo_Preparation">Demo Preparation</h2>
+
+<ul>
+<li>This demo uses pre-release of ASP.NET SignalR library. You'll need to create a local NuGet source and points it to <strong>code\Assets\SingalRAlpha</strong>. You should set up the source before you attempt to open and compile the solution.</li>
+<li>The order of adding NuGet package references is important for this project. The correct order should be: jQuery 1.8.2, Windows Azure Service Bus 1.8.0, and then Microsoft ASP.NET SignalR Service Bus Library (alpha).</li>
+</ul>
+
+<p><a name="enabling-signalr"></a></p>
+
+<h2 id="Enabling_SignalR">Enabling SignalR</h2>
+
+<ol>
+<li>Open <strong>Firework.Web</strong>. </li>
+<li>Launch the app by pressying <strong>F5</strong>. Play with the app, explaining this works in a single-user mode at the moment.</li>
+<li>Add a reference to <strong>jQuery 1.8.2</strong> NuGet package.</li>
+<li>Add a reference to <strong>Microsoft ASP.NET SignalR</strong> Nuget package.</li>
+<li>Add <strong>FireworkHub.cs</strong> from <strong>code\Assets</strong> to the project.</li>
+<li>Open <strong>Views\Home\Index.cshtml</strong>.</li>
+<li><p>Add references to SignalR javascript libraries:</p>
+
+<span class="codelanguage">HTML</span><pre><code class="HTML"><span style="color:#0000FF">&lt;</span><span style="color:#800000">script</span> <span style="color:#FF0000">src</span>=<span style="color:#0000FF">&quot;~/Scripts/jquery.signalR-1.0.0-alpha1-121025.js&quot;</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">script</span><span style="color:#0000FF">&gt;</span>
+<span style="color:#0000FF">&lt;</span><span style="color:#800000">script</span> <span style="color:#FF0000">src</span>=<span style="color:#0000FF">&quot;~/signalr/hubs&quot;</span> <span style="color:#FF0000">type</span>=<span style="color:#0000FF">&quot;text/javascript&quot;</span><span style="color:#0000FF">&gt;</span><span style="color:#0000FF">&lt;/</span><span style="color:#800000">script</span><span style="color:#0000FF">&gt;</span>
+</code></pre></li>
+<li><p>Replace</p>
+
+<span class="codelanguage">JavaScript</span><pre><code class="JavaScript">fireworks.push(firework);
+</code></pre>
+
+<p>with</p>
+
+<span class="codelanguage">JavaScript</span><pre><code class="JavaScript">hub.server.add(fireworkType.value, firework.BaseX, firework.BaseY, fireworkColor.value, fireworkTail.value);
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> Instead of adding the firework to local array, we ask server to broadcast the add operation.</p>
+</blockquote></li>
+<li><p>Replace</p>
+
+<span class="codelanguage">JavaScript</span><pre><code class="JavaScript"><span style="color:#0000FF">setTimeout</span>(updateCanvas, 50); <span style="color:#008000">//Start rendering routine.</span>
+</code></pre>
+
+<p>with</p>
+
+<span class="codelanguage">JavaScript</span><pre><code class="JavaScript">hub = $.signalR.fireworkHub;
+$.signalR.hub.stateChanged(connectionStateChanged);
+hub.on(<span style="color:#8B0000">&quot;addFirework&quot;</span>,<span style="color:#0000FF">function</span> (firework) {
+<span style="color:#0000FF">if</span> (firework.Type == 1)
+    fireworks.push(<span style="color:#0000FF">new</span> SimpleFirework(firework.X, firework.Y, firework.Color, firework.TailType));
+<span style="color:#0000FF">else</span>
+    fireworks.push(<span style="color:#0000FF">new</span> ComplexFirework(firework.X, firework.Y, firework.Color, firework.TailType));
+});
+$.signalR.hub.start().done(<span style="color:#0000FF">function</span>()
+{
+    enableUI = <span style="color:#0000FF">true</span>;
+    <span style="color:#0000FF">setTimeout</span>(updateCanvas, 50);
+});
+</code></pre></li>
+<li><p>Change</p>
+
+<span class="codelanguage">JavaScript</span><pre><code class="JavaScript"><span style="color:#0000FF">var</span> enableUI = <span style="color:#0000FF">true</span>; 
+</code></pre>
+
+<p>to</p>
+
+<span class="codelanguage">JavaScript</span><pre><code class="JavaScript"><span style="color:#0000FF">var</span> enableUI = <span style="color:#0000FF">false</span>; 
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> This locks up the canvas till client is connected.</p>
+</blockquote></li>
+</ol>
+
+<p><a name="scaling-signalr"></a></p>
+
+<h2 id="Scaling_SignalR">Scaling SignalR</h2>
+
+<ol>
+<li>Open <strong>Firework.Web</strong>.</li>
+<li>Add a refernce to <strong>Windows Azure Service Bus</strong> NuGet package.</li>
+<li> Add a reference to <strong>Microsoft ASP.NET SignalR Service Bus Libraries</strong>.</li>
+<li><p>Add <strong>Global.asax.cs</strong> from <strong>code\Assets</strong> folder, replace the existing file.</p>
+<blockquote>
+<p><strong>Note:</strong> The new code contains standard code to initialize Service Bus backplane.</p>
+</blockquote></li>
+<li><p>Open <strong>Web.config</strong> and enter your Service Bus connection string as value of <strong>Microsoft.ServiceBus.ConnectionString</strong>.</p></li>
+</ol>
+
+<p><a name="appendix"></a></p>
+
+<p><a name="optional-play-online"></a></p>
+
+<h2 id="Optional_Play_Online">(Optional) Play Online</h2>
+
+<p>Invite audience to play at <a href="http://firework.cloudapp.net/">http://firework.cloudapp.net/</a> using their Windows Phone, Surface, Windows 8 PC, iPhone, or iPad. This deployment contains 2 instances and should be good to hold up for several hundereds of concurrent fireworks. Note some mobile devices may have a hard time rendering all the sparks when there are many fireworks playing at the same time.</p>
+
+<h2 id="Appendix">Appendix</h2>
+
+<p>Currently, Windows Auzre osFamily 3 doesn't have WebSockets enabled by default. To work around that, you can use a startup task to enable WebSockets on the host machine. This is unnecessary to a successful demo as SignalR automatically falls back to other means of connection. Read <a href="http://haishibai.blogspot.com/2012/11/play-fireworks-together-process-of.html">http://haishibai.blogspot.com/2012/11/play-fireworks-together-process-of.html</a> for more details.</p>
+
+</span>
+		</div>
+	<br />
+	<p><a href="#top">top of page</a></p>
+</div> 
+<div class="clearBoth"></div>
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="microsoftLink">
+            <a href="http://www.microsoft.com/" title="Microsoft">
+                <img alt="Microsoft" src="images/ms-logo-footer.png" /></a>
+        </div>
+        <div class="leftSideLinks">
+			<a href="mailto:webcamps@microsoft.com?subject=Web Camps Training Kit">Contact Us</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href=".\" target="_blank">Browse Content</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			 &copy;&nbsp;2012 Microsoft
+		 </div>
+    </div>
+</body>
+</html>
+
